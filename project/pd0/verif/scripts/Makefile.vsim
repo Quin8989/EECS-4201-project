@@ -1,5 +1,5 @@
 SRCLIST = $(shell cat $(CL_ROOT)/verif/scripts/design.f)
-SRC = $(addprefix $(CL_ROOT)/design/code/, $(SRCLIST)) $(CL_ROOT)/verif/tests/clockgen.sv $(CL_ROOT)/design/design_wrapper.sv $(CL_ROOT)/verif/tests/test_pd.sv
+SRC = $(addprefix $(CL_ROOT)/design/code/, $(SRCLIST)) $(CL_ROOT)/verif/tests/clockgen.sv $(CL_ROOT)/design/design_wrapper.sv $(TEST_NAME).sv
 VFLAGS = -sv
 TOP = top
 _CFLAGS=

@@ -13,7 +13,7 @@ valu
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
 Z2 DXx4 work 13 constants_pkg 0 22 HHokk=RRVm@T3PJP^DFVc3
 DXx4 work 11 alu_sv_unit 0 22 ;W6kja17QbeBdLl1lUCSU0
-Z3 !s110 1768789528
+Z3 !s110 1768807608
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
@@ -23,16 +23,16 @@ IWLk8KGoD]hDUG1B?_CPK91
 !s105 alu_sv_unit
 S1
 R0
-Z5 w1768784362
+Z5 w1768806736
 Z6 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv
 Z7 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv
-!i122 6
+!i122 17
 L0 23 32
 Z8 OV;L;2020.1;71
 31
-Z9 !s108 1768789528.000000
-!s107 /eecs/home/qmiss01/EECS-4201-project/project/pd0/design//probes.svh|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv|
-Z10 !s90 -work|/eecs/home/qmiss01/EECS-4201-project/project/pd0/work|-sv|+incdir+/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code|+incdir+/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/|-stats=none|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd.sv|
+Z9 !s108 1768807608.000000
+!s107 /eecs/home/qmiss01/EECS-4201-project/project/pd0/design//probes.svh|/cs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd_custom.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv|
+Z10 !s90 -work|/eecs/home/qmiss01/EECS-4201-project/project/pd0/work|-sv|+incdir+/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code|+incdir+/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/|-stats=none|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv|/cs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd_custom.sv|
 !i113 1
 Z11 o-work /eecs/home/qmiss01/EECS-4201-project/project/pd0/work -sv
 Z12 !s92 -work /eecs/home/qmiss01/EECS-4201-project/project/pd0/work -sv +incdir+/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code +incdir+/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/
@@ -53,12 +53,12 @@ R0
 R5
 R6
 R7
-!i122 6
+!i122 17
 L0 21 0
 R8
 31
 R9
-Z14 !s107 /eecs/home/qmiss01/EECS-4201-project/project/pd0/design//probes.svh|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv|
+Z14 !s107 /eecs/home/qmiss01/EECS-4201-project/project/pd0/design//probes.svh|/cs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd_custom.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/alu.sv|/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv|
 R10
 !i113 1
 R11
@@ -77,7 +77,7 @@ R0
 Z16 w1768677054
 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv
 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/assign_xor.sv
-!i122 6
+!i122 17
 L0 15 9
 R8
 r1
@@ -103,7 +103,7 @@ R0
 R16
 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv
 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/clockgen.sv
-!i122 6
+!i122 17
 L0 11 39
 R8
 r1
@@ -129,7 +129,7 @@ R0
 R16
 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv
 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/constants_pkg.sv
-!i122 6
+!i122 17
 L0 1 0
 R8
 r1
@@ -155,7 +155,7 @@ R0
 R16
 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv
 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/design_wrapper.sv
-!i122 6
+!i122 17
 L0 6 10
 R8
 r1
@@ -181,7 +181,7 @@ R0
 w1768784253
 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv
 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/pd0.sv
-!i122 6
+!i122 17
 L0 15 57
 R8
 r1
@@ -198,17 +198,17 @@ vreg_rst
 R1
 R3
 !i10b 1
-!s100 zN_YWVj]izT?MG8dD2XoY1
+!s100 Q=8NoV<GjbPf7k=KLUD_d0
 R15
-I`gD2OIgnKFBONE^2aezPP1
+I>7Da38PLaiIh@_YS4O7Zi2
 R4
 S1
 R0
-w1768785170
+w1768804213
 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv
 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/reg_rst.sv
-!i122 6
-L0 17 17
+!i122 17
+L0 17 16
 R8
 r1
 !s85 0
@@ -237,7 +237,7 @@ R0
 Z17 w1768788588
 Z18 8/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv
 Z19 F/eecs/home/qmiss01/EECS-4201-project/project/pd0/design/code/three_stage_pipeline.sv
-!i122 6
+!i122 17
 L0 29 76
 R8
 31
@@ -264,7 +264,7 @@ R0
 R17
 R18
 R19
-!i122 6
+!i122 17
 L0 28 0
 R8
 31
@@ -279,17 +279,17 @@ vtop
 R1
 R3
 !i10b 1
-!s100 Y0P<a5NglGbJhPjIY>AVe0
+!s100 bgb@=1QFidLH=I9[Ae=[U2
 R15
-I94Mj4CQ7k`8IM2VBI?mDl3
+Inj:3IZEkGXn>OlzOWXc2J0
 R4
 S1
 R0
-R16
-8/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd.sv
-F/eecs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd.sv
-!i122 6
-L0 8 157
+w1768804339
+8/cs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd_custom.sv
+F/cs/home/qmiss01/EECS-4201-project/project/pd0/verif/tests/test_pd_custom.sv
+!i122 17
+L0 8 175
 R8
 r1
 !s85 0

@@ -23,11 +23,10 @@ module reg_rst #(
 );
 
 always_ff @(posedge clk) begin
-    if (rst) begin
-        out_o <= '0;      // Synchronously reset output to 0
-    end else begin
-        out_o <= in_i;    // Latch input on rising clock edge
-    end
+    if (rst)
+        out_o <= '0;
+    else
+        out_o <= in_i;
 end
 
 endmodule: reg_rst
