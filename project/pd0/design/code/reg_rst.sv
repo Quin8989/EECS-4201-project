@@ -21,9 +21,13 @@ module reg_rst #(
     input logic [DWIDTH-1:0] in_i,
     output logic [DWIDTH-1:0] out_o
 );
-    /*
-     * Process definitions to be filled by
-     * student below...
-     */
+
+always_ff @(posedge clk) begin
+    if (rst) begin
+        out_o <= '0;      // Synchronously reset output to 0
+    end else begin
+        out_o <= in_i;    // Latch input on rising clock edge
+    end
+end
 
 endmodule: reg_rst

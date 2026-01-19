@@ -25,7 +25,7 @@
  * Outputs:
  * 1) DWIDTH-wide result res_o
  */
-
+import constants_pkg::*;
 module three_stage_pipeline #(
 parameter int DWIDTH = 8)(
         input logic clk,
@@ -35,12 +35,70 @@ parameter int DWIDTH = 8)(
         output logic [DWIDTH-1:0] res_o
     );
 
-    /*
-     * Process definitions to be filled by
-     * student below...
-     * [HINT] Instantiate the alu and reg_rst modules
-     * and set up the necessary connections
-     *
-     */
+// Stage 1: Pipeline registers for inputs
+logic [DWIDTH-1:0] stage1_op1_reg, stage1_op2_reg;
+
+reg_rst #(.DWIDTH(DWIDTH)) reg1_op1 (
+    .clk(clk),
+    .rst(rst),
+    .in_i(op1_i),
+    .out_o(stage1_op1_reg)
+);
+
+reg_rst #(.DWIDTH(DWIDTH)) reg1_op2 (
+    .clk(clk),
+    .rst(rst),
+    .in_i(op2_i),
+    .out_o(stage1_op2_reg)
+);
+
+// ALU Stage 1: Addition
+logic [DWIDTH-1:0] stage1_alu_res;
+
+alu #(.DWIDTH(DWIDTH)) alu_add (
+    .sel_i(ADD),
+    .op1_i(stage1_op1_reg),
+    .op2_i(stage1_op2_reg),
+    .res_o(stage1_alu_res),
+    .zero_o(),
+    .neg_o()
+);
+
+// Stage 2: Pipeline registers for ADD result and op1_i (needed for subtraction)
+logic [DWIDTH-1:0] stage2_add_res_reg, stage2_op1_reg;
+
+reg_rst #(.DWIDTH(DWIDTH)) reg2_add_res (
+    .clk(clk),
+    .rst(rst),
+    .in_i(stage1_alu_res),
+    .out_o(stage2_add_res_reg)
+);
+
+reg_rst #(.DWIDTH(DWIDTH)) reg2_op1 (
+    .clk(clk),
+    .rst(rst),
+    .in_i(stage1_op1_reg),
+    .out_o(stage2_op1_reg)
+);
+
+// ALU Stage 2: Subtraction
+logic [DWIDTH-1:0] stage2_alu_res;
+
+alu #(.DWIDTH(DWIDTH)) alu_sub (
+    .sel_i(SUB),
+    .op1_i(stage2_add_res_reg),
+    .op2_i(stage2_op1_reg),
+    .res_o(stage2_alu_res),
+    .zero_o(),
+    .neg_o()
+);
+
+// Stage 3: Pipeline register for final result
+reg_rst #(.DWIDTH(DWIDTH)) reg3_res (
+    .clk(clk),
+    .rst(rst),
+    .in_i(stage2_alu_res),
+    .out_o(res_o)
+);
 
 endmodule: three_stage_pipeline
