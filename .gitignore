@@ -1,0 +1,37 @@
+# Simulation outputs and build artifacts
+*.vcd
+*.wdb
+*.ghw
+*.vcp
+transcript
+*_transcript
+vish_stacktrace.vstf
+
+# ModelSim/Questa work directory
+work/
+
+# Macro and configuration files
+*.macro
+*.do
+
+# VCD files in scripts directories
+verif/scripts/*.vcd
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.exe
+
+# Editor temporary files
+*~
+*.swp
+*.swo
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Verilator
+obj_dir/
