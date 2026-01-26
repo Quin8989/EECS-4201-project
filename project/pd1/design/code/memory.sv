@@ -57,4 +57,24 @@ module memory #(
    *
    */
 
+  // Read logic
+  always_comb begin
+    if (read_en_i) begin
+      data_o = {main_memory[address + 3], main_memory[address + 2],
+                main_memory[address + 1], main_memory[address]};
+    end
+    else begin
+      data_o = '0;
+    end
+  end
+
+  // Write logic
+  always_ff @(posedge clk) begin
+    if (write_en_i) begin
+      main_memory[address] <= data_i[7:0];
+      main_memory[address + 1] <= data_i[15:8];
+      main_memory[address + 2] <= data_i[23:16];
+      main_memory[address + 3] <= data_i[31:24];
+    end
+  end
 endmodule : memory

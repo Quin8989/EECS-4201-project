@@ -1,3 +1,3 @@
-vcd file pd.vcd
-vcd add -r /top/*
+vcd file "/eecs/home/qmiss01/EECS-4201-project/project/pd0/test_pd_custom.vcd"
+vcd add -r /top/* 
 run -all

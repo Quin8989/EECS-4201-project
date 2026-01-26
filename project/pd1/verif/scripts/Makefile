@@ -49,3 +49,14 @@ endif
 EXTRA_PACKAGE_FILES := 
 
 include ${PROJECT_ROOT}/common/verif/tb/scripts/Makefile.common.inc
+
+# Self-test helper (optional; run with e.g., make selftest SELFTEST=selftest_pc)
+SELFTEST ?= selftest_pc
+selftest: make_sim_dir
+	vlog -suppress 7061 -work $(CL_ROOT)/work -sv \
+		+incdir+$(CL_ROOT)/design/code +incdir+$(CL_ROOT)/design +incdir+$(CL_ROOT)/verif/tests \
+		+define+MEM_PATH=$(MEM_PATH_STR) +define+LINE_COUNT=$(LINE_COUNT) +define+MEM_DEPTH=$(MEM_DEPTH) \
+		$(CL_ROOT)/design/code/fetch.sv $(CL_ROOT)/design/code/memory.sv $(CL_ROOT)/design/code/pd1.sv \
+		$(CL_ROOT)/design/design_wrapper.sv $(CL_ROOT)/verif/tests/clockgen.sv $(CL_ROOT)/verif/tests/$(SELFTEST).sv
+	echo -e "run -all\nquit -f" > $(CL_ROOT)/verif/scripts/run_$(SELFTEST).macro
+	vsim -suppress 3839 -c -do $(CL_ROOT)/verif/scripts/run_$(SELFTEST).macro $(CL_ROOT)/work.$(SELFTEST)
