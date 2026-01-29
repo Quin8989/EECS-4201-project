@@ -15,6 +15,10 @@
  * Outputs:
  * 1) DWIDTH data output data_o
  */
+`define MEM_DEPTH 65535     // 64 KB byte-addressable memory
+`define LINE_COUNT 4096     // max number of 32-bit words to preload
+`define MEM_PATH "program.hex"
+
 
 module memory #(
   // parameters
@@ -69,7 +73,7 @@ module memory #(
   end
 
   // Write logic
-  always_ff @(posedge clk) begin
+  always @(posedge clk) begin
     if (write_en_i) begin
       main_memory[address] <= data_i[7:0];
       main_memory[address + 1] <= data_i[15:8];
