@@ -38,4 +38,26 @@
      * student below...
      */
 
+    // 32 general purpose registers (x0-x31)
+    logic [DWIDTH-1:0] registers [0:31];
+
+    // initialize stack pointer (x2) to top of memory (word-aligned)
+    localparam logic [DWIDTH-1:0] STACK_INIT = 32'h0110_0000;
+
+    // combinational reads
+    assign rs1data_o = (rs1_i == 5'd0) ? '0 : registers[rs1_i];
+    assign rs2data_o = (rs2_i == 5'd0) ? '0 : registers[rs2_i];
+
+    // sequential writes with synchronous reset
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            for (int i = 0; i < 32; i++) begin
+                registers[i] <= '0;
+            end
+            registers[5'd2] <= STACK_INIT; // x2 = stack pointer
+        end else if (regwren_i && (rd_i != 5'd0)) begin
+            registers[rd_i] <= datawb_i;
+        end
+    end
+
 endmodule : register_file
