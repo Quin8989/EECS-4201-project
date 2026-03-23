@@ -58,7 +58,7 @@ Reading pref.tcl
 # 2020.1
 
 # vsim -suppress 3839 -c -do "/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro" /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top 
-# Start time: 17:27:15 on Mar 23,2026
+# Start time: 17:46:26 on Mar 23,2026
 # Loading sv_std.std
 # Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
 # Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.clockgen
@@ -106,16 +106,15 @@ Reading pref.tcl
 # STALLDBG: type=   WB_ID d_pc=0100017c idex_pc=0100017c idex_insn=00000013 memwb_rd=14 memwb_regwren=1 d_rs1=14 d_rs2=15
 # BRDBG: pc=0100017c funct3=4 rs1=14 rs2=15 rs1_data=00000001 rs2_data=00000008 fwd_rs1=00000001 fwd_rs2=00000008 taken=1 target=010000b8
 # STALLDBG: type=   WB_ID d_pc=010000c4 idex_pc=010000c0 idex_insn=fff78793 memwb_rd=14 memwb_regwren=1 d_rs1=14 d_rs2=15
-# STALLDBG: type=   WB_ID d_pc=010000c4 idex_pc=010000c4 idex_insn=00000013 memwb_rd=15 memwb_regwren=1 d_rs1=14 d_rs2=15
 # X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
-# F stage mismatch: expected PC=010000cc, INSN=00c12703, got PC=010000c8, INSN=00279793
-# D stage mismatch: expected PC=010000c8, OPCODE=13, RD=0f, RS1=0f, RS2=02, FUNCT3=1, FUNCT7=00, IMM=00000002, got PC=010000c4, OPCODE=33, RD=0f, RS1=0e, RS2=0f, FUNCT3=0, FUNCT7=00, IMM=00000000 
-# R stage mismatch: expected READ_RS1=0f, READ_RS2=02, READ_RS1_DATA=40000000, READ_RS2_DATA=010fffb0, got READ_RS1=0e, READ_RS2=0f, READ_RS1_DATA=00000001, READ_RS2_DATA=40000000
-# E stage mismatch: expected PC=010000c4, ALU_RES=40000000, BR_TAKEN=0, got PC=010000c4, ALU_RES=00000000, BR_TAKEN=0
+# ADD_MEM: exmem_rs2=0 exmem_rs2_data=00000000 memwb_rd=15 memwb_regwren=1 wb_data=3fffffff mem_store_data=00000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# ADD_MEM: exmem_rs2=15 exmem_rs2_data=3fffffff memwb_rd=0 memwb_regwren=1 wb_data=00000000 mem_store_data=3fffffff
+# M stage mismatch: expected PC=010000c8, ADDRESS=00000000, SIZE_ENCODED=1, DATA=010fffb0, got PC=010000c8, ADDRESS=00000000, SIZE_ENCODED=0, DATA=010fffb0
 # ** Fatal: Assertion error.
-#    Time: 156 ps  Scope: top.genblk3.tick_check File: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h Line: 45
+#    Time: 160 ps  Scope: top.genblk3.tick_check File: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h Line: 45
 # ** Note: $finish    : /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h(45)
-#    Time: 156 ps  Iteration: 1  Region: /top/genblk3
-# End time: 17:27:15 on Mar 23,2026, Elapsed time: 0:00:00
+#    Time: 160 ps  Iteration: 1  Region: /top/genblk3
+# End time: 17:46:26 on Mar 23,2026, Elapsed time: 0:00:00
 # Errors: 1, Warnings: 0
 make: Leaving directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'

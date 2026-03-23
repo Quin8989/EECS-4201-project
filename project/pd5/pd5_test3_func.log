@@ -1,3 +1,71 @@
+make: Entering directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'
+echo Vsim Compilation
+Vsim Compilation
+mkdir -p /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/sim/vsim/test_pd
+vlog -work /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work \
+	-suppress 7061 \
+	-sv \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/ \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests \
+	+define+MEM_PATH=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x\" \
+	+define+TEST_VECTOR=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test_vector.x\" \
+	+define+MEM_DEPTH=1048576 \
+	+define+GEN_TRACE=0 \
+	+define+TRACE_FILE=\"test1.trace\"\
+	+define+LINE_COUNT=62 \
+	+define+PATTERN_FILE=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.pattern\" \
+	+define+PATTERN_LINE_COUNT=2390 \
+	+define+PATTERN_DUMP_FILE=\"test1.dump\" \
+	+define+PATTERN_DUMP=0 \
+	+define+PATTERN_CHECK=0 \
+	+define+VCD_FILE=\"test1.vcd\" \
+	+define+TIMEOUT=50000 \
+	-stats=none /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "constants_svh_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package constants_svh_unit
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "memory_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package memory_sv_unit
+-- Compiling module memory
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "fetch_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package fetch_sv_unit
+-- Compiling module fetch
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "control_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package control_sv_unit
+-- Compiling module control
+-- Compiling module branch_control
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "decode_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package decode_sv_unit
+-- Compiling module decode
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "igen_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package igen_sv_unit
+-- Compiling module igen
+-- Compiling module register_file
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "writeback_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package writeback_sv_unit
+-- Compiling module writeback
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "execute_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package execute_sv_unit
+-- Compiling module execute
+** Warning: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh(10): (vlog-13233) Design unit "pd5_sv_unit" already exists and will be overwritten. Design unit compiled with different set of options.
+-- Compiling package pd5_sv_unit
+-- Compiling module pd5
+-- Compiling module clockgen
+-- Compiling module design_wrapper
+-- Compiling module top
+
+Top level modules:
+	top
+rm -f /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+echo -e "vcd file \"test1.vcd\"\nvcd add -r /top/* \nrun -all" >> /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+echo Vsim Run
+Vsim Run
+vsim -suppress 3839 -c -do /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
+Reading pref.tcl
+
+# 2020.1
+
 # vsim -suppress 3839 -c -do "/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro" /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top 
 # Start time: 18:23:15 on Mar 23,2026
 # Loading sv_std.std
@@ -274,3 +342,4 @@
 #    Time: 905 ps  Iteration: 1  Instance: /top/dut/core
 # End time: 18:23:16 on Mar 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+make: Leaving directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'

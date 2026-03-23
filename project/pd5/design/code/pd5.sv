@@ -29,6 +29,9 @@ module pd5 #(
     logic [AWIDTH-1:0] next_pc;
     logic branch_taken_ex;
     logic load_use_stall;
+    logic wb_to_id_stall;
+    logic wb_to_id_stall_raw;
+    logic wb_to_id_suppress;
 
     logic [AWIDTH-1:0] ifid_pc;
     logic [DWIDTH-1:0] ifid_insn;
@@ -160,33 +163,13 @@ module pd5 #(
     logic d_uses_rs1;
     logic [DWIDTH-1:0] m_data_probe;
 
-    // Decode-stage jump redirect (JAL/JALR resolved in ID, 1-cycle penalty)
+    // All jumps and branches resolved in EX stage (2-cycle penalty for JAL/JALR/branch)
     logic             id_jump_taken;
     logic [AWIDTH-1:0] id_jump_target;
 
-    assign data_out = f_insn;
-
-    // -----------------------------------------------------------------------
-    // Decode-stage jump resolution (JAL/JALR):
-    //   JAL:  target = d_pc + d_imm  (pure PC-relative, computable in decode)
-    //   JALR: target = (rs1 + imm) & ~1  (rs1 from register file, read in decode)
-    // This gives a 1-cycle penalty instead of 2 from EX-stage resolution.
-    // Guard against firing when EX is already redirecting (EX takes priority).
-    // -----------------------------------------------------------------------
-    always_comb begin
-        id_jump_taken  = 1'b0;
-        id_jump_target = '0;
-
-        if (!load_use_stall && !branch_taken_ex) begin
-            if (d_opcode == `OPC_JAL) begin
-                id_jump_taken  = 1'b1;
-                id_jump_target = d_pc + d_imm;
-            end else if (d_opcode == `OPC_JALR) begin
-                id_jump_taken  = 1'b1;
-                id_jump_target = (d_rs1_data + d_imm) & 32'hffff_fffe;
-            end
-        end
-    end
+    assign data_out    = f_insn;
+    assign id_jump_taken  = 1'b0;
+    assign id_jump_target = '0;
 
     assign r_write_enable      = memwb_regwren;
     assign r_write_destination = memwb_rd;
@@ -199,7 +182,7 @@ module pd5 #(
     assign e_pc           = idex_pc;
     assign m_pc           = exmem_pc;
     assign m_address      = exmem_alu_res;
-    assign m_size_encoded = exmem_funct3;
+    assign m_size_encoded = (exmem_opcode == `OPC_BRANCH) ? 3'b0 : exmem_funct3;
     assign w_pc           = memwb_pc;
     assign w_enable       = memwb_regwren;
     assign w_destination  = memwb_rd;
@@ -281,8 +264,8 @@ module pd5 #(
         .clk       (clk),
         .rst       (reset),
         .next_pc_i (next_pc),
-        .brtaken_i (branch_taken_ex | id_jump_taken),
-        .stall_i   (load_use_stall),
+        .brtaken_i (branch_taken_ex),
+        .stall_i   (load_use_stall | wb_to_id_stall),
         .pc_o      (f_pc),
         .insn_o    (f_insn)
     );
@@ -293,14 +276,10 @@ module pd5 #(
             ifid_pc   <= '0;
             ifid_insn <= '0;
         end else if (branch_taken_ex) begin
-            // keep the same decode pc, but squash the instruction into a real nop
+            // EX-stage redirect: preserve wrong-path PC, squash instruction to NOP
             ifid_pc   <= ifid_pc;
             ifid_insn <= nop_insn;
-        end else if (id_jump_taken) begin
-            // Decode-stage JAL/JALR: squash the one wrong-path instruction from IF
-            ifid_pc   <= ifid_pc;
-            ifid_insn <= nop_insn;
-        end else if (!load_use_stall) begin
+        end else if (!load_use_stall && !wb_to_id_stall) begin
             ifid_pc   <= f_pc;
             ifid_insn <= f_insn;
         end
@@ -383,6 +362,33 @@ module pd5 #(
         endcase
     end
 
+    // WB-to-ID hazard stall:
+    // WB->EX forwarding handles RAW hazards when the source leaves WB at the same
+    // cycle the dependent enters EX. This fails in three cases:
+    //   1. EX has a STORE (idex_memwren=1): store blocks the forwarding path.
+    //   2. EX has a BUBBLE (idex_insn==nop_insn): no instruction to receive the value.
+    //   3. WB is completing a LOAD (memwb_wbsel==WB_MEM): load result only lives one
+    //      cycle in WB; with 2+ instructions between load and dependent, forwarding misses.
+    // Exception for the BUBBLE case: if MEM stage already has a NEWER write to the same
+    // register (exmem_rd == memwb_rd), that newer value will be in MEM/WB next cycle
+    // and forwarded to EX -- no stall needed.
+    assign wb_to_id_stall_raw =
+        (idex_memwren || (idex_insn == nop_insn) || (memwb_wbsel == `WB_MEM)) &&
+        memwb_regwren &&
+        (memwb_rd != 5'd0) &&
+        (
+            (d_uses_rs1 && (d_rs1 == memwb_rd) && (d_rs1 != 5'd0)) ||
+            (d_uses_rs2 && (d_rs2 == memwb_rd) && (d_rs2 != 5'd0))
+        );
+
+    assign wb_to_id_suppress =
+        (idex_insn == nop_insn) &&
+        exmem_regwren &&
+        (exmem_rd != 5'd0) &&
+        (exmem_rd == memwb_rd);
+
+    assign wb_to_id_stall = wb_to_id_stall_raw && !wb_to_id_suppress;
+
     assign load_use_stall =
         idex_memren &&
         (idex_rd != 5'd0) &&
@@ -416,31 +422,9 @@ module pd5 #(
             idex_memwren  <= 1'b0;
             idex_wbsel    <= `WB_OFF;
             idex_alusel   <= `ALU_ADD;
-        end else if (load_use_stall) begin
-            idex_pc       <= '0;
-            idex_insn     <= '0;
-            idex_opcode   <= '0;
-            idex_rd       <= '0;
-            idex_rs1      <= '0;
-            idex_rs2      <= '0;
-            idex_funct7   <= '0;
-            idex_funct3   <= '0;
-            idex_shamt    <= '0;
-            idex_imm      <= '0;
-            idex_rs1_data <= '0;
-            idex_rs2_data <= '0;
-            idex_pcsel    <= 1'b0;
-            idex_immsel   <= 1'b0;
-            idex_regwren  <= 1'b0;
-            idex_rs1sel   <= 1'b0;
-            idex_rs2sel   <= 1'b0;
-            idex_memren   <= 1'b0;
-            idex_memwren  <= 1'b0;
-            idex_wbsel    <= `WB_OFF;
-            idex_alusel   <= `ALU_ADD;
-        end else if (branch_taken_ex) begin
-            // send a nop-looking instruction into execute at the same pc
-            idex_pc       <= ifid_pc;
+        end else if (load_use_stall || wb_to_id_stall) begin
+            // Insert bubble - hold IF/ID, preserve d_pc so checker can see it
+            idex_pc       <= d_pc;
             idex_insn     <= nop_insn;
             idex_opcode   <= `OPC_ITYPE;
             idex_rd       <= 5'd0;
@@ -452,8 +436,6 @@ module pd5 #(
             idex_imm      <= 32'd0;
             idex_rs1_data <= 32'd0;
             idex_rs2_data <= 32'd0;
-
-            // control for addi x0, x0, 0
             idex_pcsel    <= 1'b0;
             idex_immsel   <= 1'b1;
             idex_regwren  <= 1'b1;
@@ -463,30 +445,29 @@ module pd5 #(
             idex_memwren  <= 1'b0;
             idex_wbsel    <= `WB_ALU;
             idex_alusel   <= `ALU_ADD;
-        end else if (id_jump_taken) begin
-            // JAL/JALR resolved in decode: pass into EX for rd writeback,
-            // but clear pcsel so EX does NOT fire a second redirect.
+        end else if (branch_taken_ex) begin
+            // EX redirect: preserve wrong-path PC, flush control signals (second bubble)
             idex_pc       <= d_pc;
-            idex_insn     <= d_insn;
-            idex_opcode   <= d_opcode;
-            idex_rd       <= d_rd;
-            idex_rs1      <= d_rs1;
-            idex_rs2      <= d_rs2;
-            idex_funct7   <= d_funct7;
-            idex_funct3   <= d_funct3;
-            idex_shamt    <= d_shamt;
-            idex_imm      <= d_imm;
-            idex_rs1_data <= d_rs1_data;
-            idex_rs2_data <= d_rs2_data;
-            idex_pcsel    <= 1'b0;        // redirect already done in decode
-            idex_immsel   <= d_immsel;
-            idex_regwren  <= d_regwren;
-            idex_rs1sel   <= d_rs1sel;
-            idex_rs2sel   <= d_rs2sel;
-            idex_memren   <= d_memren;
-            idex_memwren  <= d_memwren;
-            idex_wbsel    <= d_wbsel;
-            idex_alusel   <= d_alusel;
+            idex_insn     <= nop_insn;
+            idex_opcode   <= `OPC_ITYPE;
+            idex_rd       <= 5'd0;
+            idex_rs1      <= 5'd0;
+            idex_rs2      <= 5'd0;
+            idex_funct7   <= 7'd0;
+            idex_funct3   <= 3'd0;
+            idex_shamt    <= 5'd0;
+            idex_imm      <= 32'd0;
+            idex_rs1_data <= 32'd0;
+            idex_rs2_data <= 32'd0;
+            idex_pcsel    <= 1'b0;
+            idex_immsel   <= 1'b1;
+            idex_regwren  <= 1'b1;
+            idex_rs1sel   <= 1'b0;
+            idex_rs2sel   <= 1'b0;
+            idex_memren   <= 1'b0;
+            idex_memwren  <= 1'b0;
+            idex_wbsel    <= `WB_ALU;
+            idex_alusel   <= `ALU_ADD;
         end else begin
             idex_pc       <= d_pc;
             idex_insn     <= d_insn;
@@ -611,8 +592,7 @@ module pd5 #(
     end
 
     assign branch_taken_ex = e_br_taken | idex_pcsel;
-    // EX-stage redirect takes priority over decode-stage jump redirect
-    assign next_pc = branch_taken_ex ? ex_branch_target : id_jump_target;
+    assign next_pc = ex_branch_target;
 
     // EX/MEM
     always_ff @(posedge clk) begin
@@ -637,7 +617,7 @@ module pd5 #(
             exmem_rs2      <= idex_rs2;
             exmem_funct3   <= idex_funct3;
             exmem_alu_res  <= e_alu_res;
-            exmem_rs2_data <= idex_rs2_data;
+            exmem_rs2_data <= ex_fwd_rs2_data;
             exmem_regwren  <= idex_regwren;
             exmem_memren   <= idex_memren;
             exmem_memwren  <= idex_memwren;
@@ -645,7 +625,7 @@ module pd5 #(
         end
     end
 
-    // proper store-data forwarding
+    // store-data forwarding
     always_comb begin
         mem_store_data = exmem_rs2_data;
 
@@ -702,7 +682,8 @@ module pd5 #(
         .writeback_data_o (wb_data)
     );
 
-    // optional light debug only
+    // ── Functional debug ──────────────────────────────────────────────────────
+    // Report x15 when PASS/FAIL instructions reach WB
     always_ff @(posedge clk) begin
         if (!reset) begin
             if (w_pc_probe == 32'h01000230 || w_pc_probe == 32'h0100023c) begin
@@ -712,26 +693,47 @@ module pd5 #(
         end
     end
 
+    // Report every branch outcome (taken/not-taken, values used)
     always_ff @(posedge clk) begin
-        if (!reset && exmem_pc == 32'h01000058) begin
-            $display("FAILDBG_M: pc=%h insn=%h opcode=%h rs2=%0d exmem_rs2_data=%h mem_store_data=%h memwb_rd=%0d wb_data=%h",
-                    exmem_pc, exmem_insn, exmem_opcode, exmem_rs2, exmem_rs2_data, mem_store_data, memwb_rd, wb_data);
+        if (!reset && idex_opcode == `OPC_BRANCH && idex_insn != nop_insn) begin
+            $display("BR: pc=%h taken=%b rs1=%0d=%h rs2=%0d=%h target=%h",
+                    idex_pc, e_br_taken,
+                    idex_rs1, ex_fwd_rs1_data,
+                    idex_rs2, ex_fwd_rs2_data,
+                    ex_branch_target);
         end
     end
 
+    // Report every register write so we can track a5 (x15) and a4 (x14)
     always_ff @(posedge clk) begin
-        if (!reset && (memwb_rd == 5'd15) && memwb_regwren) begin
-            $display("X15DBG: w_pc=%h wbsel=%0d alu_res=%h mem_data=%h wb_data=%h",
-                    memwb_pc, memwb_wbsel, memwb_alu_res, memwb_mem_data, wb_data);
+        if (!reset && memwb_regwren && memwb_rd != 5'd0) begin
+            $display("WB: pc=%h rd=%0d data=%h",
+                    memwb_pc, memwb_rd, wb_data);
         end
     end
 
     // program termination logic
     reg is_program = 0;
     always_ff @(posedge clk) begin
-        if (data_out == 32'h00000073) $finish;
+        if (data_out == 32'h00000073) begin
+            $display("RESULT: x15=%h", rf_x15);
+            $finish;
+        end
         if (data_out == 32'h00008067) is_program = 1;
-        if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH)) $finish;
+        if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH)) begin
+            $display("RESULT: x15=%h", rf_x15);
+            $finish;
+        end
+    end
+
+    // Report simulation termination reason
+    always_ff @(posedge clk) begin
+        if (!reset) begin
+            if (data_out == 32'h00000073)
+                $display("TERM: ecall at f_pc=%h x15=%h", f_pc, rf_x15);
+            if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH))
+                $display("TERM: sp sentinel at f_pc=%h x15=%h", f_pc, rf_x15);
+        end
     end
 
 
