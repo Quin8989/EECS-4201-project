@@ -18,10 +18,7 @@ module pd5 #(
     input logic reset
 );
 
-    logic [31:0] nop_insn;
-    assign nop_insn = 32'h00000013;
-
-    logic [AWIDTH-1:0] data_out;
+    localparam logic [31:0] NOP_INSN = 32'h00000013;
 
     logic [AWIDTH-1:0] f_pc;
     logic [DWIDTH-1:0] f_insn;
@@ -92,7 +89,6 @@ module pd5 #(
 
     logic [AWIDTH-1:0] exmem_pc;
     logic [DWIDTH-1:0] exmem_insn;
-    logic [6:0] exmem_opcode;
     logic [4:0] exmem_rd;
     logic [4:0] exmem_rs2;
     logic [2:0] exmem_funct3;
@@ -105,7 +101,6 @@ module pd5 #(
 
     logic [DWIDTH-1:0] m_data;
     logic [DWIDTH-1:0] mem_store_data;
-    logic m_data_vld;
 
     logic [AWIDTH-1:0] memwb_pc;
     logic [DWIDTH-1:0] memwb_insn;
@@ -116,14 +111,6 @@ module pd5 #(
     logic [1:0] memwb_wbsel;
 
     logic [DWIDTH-1:0] wb_data;
-
-    logic r_write_enable;
-    logic [4:0] r_write_destination;
-    logic [DWIDTH-1:0] r_write_data;
-    logic [4:0] r_read_rs1;
-    logic [4:0] r_read_rs2;
-    logic [DWIDTH-1:0] r_read_rs1_data;
-    logic [DWIDTH-1:0] r_read_rs2_data;
 
     logic [AWIDTH-1:0] e_pc;
     logic [AWIDTH-1:0] m_pc;
@@ -159,16 +146,6 @@ module pd5 #(
     logic d_uses_rs2;
     logic d_uses_rs1;
     logic [DWIDTH-1:0] m_data_probe;
-
-    assign data_out = f_insn;
-
-    assign r_write_enable      = memwb_regwren;
-    assign r_write_destination = memwb_rd;
-    assign r_write_data        = wb_data;
-    assign r_read_rs1          = d_rs1;
-    assign r_read_rs2          = d_rs2;
-    assign r_read_rs1_data     = d_rs1_data;
-    assign r_read_rs2_data     = d_rs2_data;
 
     assign e_pc           = idex_pc;
     assign m_pc           = exmem_pc;
@@ -269,7 +246,7 @@ module pd5 #(
         end else if (branch_taken_ex) begin
             // keep the same decode pc, but squash the instruction into a real nop
             ifid_pc   <= ifid_pc;
-            ifid_insn <= nop_insn;
+            ifid_insn <= NOP_INSN;
         end else if (!load_use_stall) begin
             ifid_pc   <= f_pc;
             ifid_insn <= f_insn;
@@ -399,7 +376,7 @@ module pd5 #(
             idex_alusel   <= `ALU_ADD;
         end else if (load_use_stall) begin
             idex_pc       <= d_pc;
-            idex_insn     <= nop_insn;
+            idex_insn     <= NOP_INSN;
             idex_opcode   <= `OPC_ITYPE;
             idex_rd       <= 5'd0;
             idex_rs1      <= 5'd0;
@@ -422,7 +399,7 @@ module pd5 #(
         end else if (branch_taken_ex) begin
             // send a nop-looking instruction into execute at the same pc
             idex_pc       <= ifid_pc;
-            idex_insn     <= nop_insn;
+            idex_insn     <= NOP_INSN;
             idex_opcode   <= `OPC_ITYPE;
             idex_rd       <= 5'd0;
             idex_rs1      <= 5'd0;
@@ -491,10 +468,7 @@ module pd5 #(
         ex_operand_b = ex_fwd_rs2_data;
 
         case (idex_opcode)
-            `OPC_AUIPC: begin
-                ex_operand_a = idex_pc;
-                ex_operand_b = idex_imm;
-            end
+            `OPC_AUIPC,
             `OPC_JAL: begin
                 ex_operand_a = idex_pc;
                 ex_operand_b = idex_imm;
@@ -575,7 +549,6 @@ module pd5 #(
         if (reset) begin
             exmem_pc       <= '0;
             exmem_insn     <= '0;
-            exmem_opcode   <= '0;
             exmem_rd       <= '0;
             exmem_rs2      <= '0;
             exmem_funct3   <= '0;
@@ -588,7 +561,6 @@ module pd5 #(
         end else begin
             exmem_pc       <= idex_pc;
             exmem_insn     <= idex_insn;
-            exmem_opcode   <= idex_opcode;
             exmem_rd       <= idex_rd;
             exmem_rs2      <= idex_rs2;
             exmem_funct3   <= idex_funct3;
@@ -623,7 +595,7 @@ module pd5 #(
         .funct3_i   (exmem_funct3),
         .data_o     (m_data),
         .raw_data_o (),
-        .data_vld_o (m_data_vld)
+        .data_vld_o ()
     );
 
     // MEM/WB
@@ -661,8 +633,8 @@ module pd5 #(
     // program termination logic
     reg is_program = 0;
     always_ff @(posedge clk) begin
-        if (data_out == 32'h00000073) $finish;
-        if (data_out == 32'h00008067) is_program = 1;
+        if (f_insn == 32'h00000073) $finish;
+        if (f_insn == 32'h00008067) is_program = 1;
         if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH)) $finish;
     end
 
