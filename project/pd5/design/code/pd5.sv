@@ -293,7 +293,7 @@ module pd5 #(
             ifid_pc   <= '0;
             ifid_insn <= '0;
         end else if (branch_taken_ex) begin
-            // EX-stage branch taken: squash the speculatively fetched instruction
+            // keep the same decode pc, but squash the instruction into a real nop
             ifid_pc   <= ifid_pc;
             ifid_insn <= nop_insn;
         end else if (id_jump_taken) begin
@@ -464,7 +464,7 @@ module pd5 #(
             idex_wbsel    <= `WB_ALU;
             idex_alusel   <= `ALU_ADD;
         end else if (id_jump_taken) begin
-            // JAL/JALR resolved in decode: let the jump flow into EX for rd writeback,
+            // JAL/JALR resolved in decode: pass into EX for rd writeback,
             // but clear pcsel so EX does NOT fire a second redirect.
             idex_pc       <= d_pc;
             idex_insn     <= d_insn;
@@ -646,12 +646,10 @@ module pd5 #(
     end
 
     // proper store-data forwarding
-    // IMPORTANT: must check memwb_regwren, because STORE instructions pass their
-    // imm[4:0] bits through the rd pipeline field, which can alias a real register number.
     always_comb begin
         mem_store_data = exmem_rs2_data;
 
-        if (memwb_regwren && (exmem_rs2 != 5'd0) && (memwb_rd == exmem_rs2))
+        if ((exmem_rs2 != 5'd0) && (memwb_rd == exmem_rs2))
             mem_store_data = wb_data;
     end
 
@@ -735,5 +733,6 @@ module pd5 #(
         if (data_out == 32'h00008067) is_program = 1;
         if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH)) $finish;
     end
+
 
 endmodule : pd5
