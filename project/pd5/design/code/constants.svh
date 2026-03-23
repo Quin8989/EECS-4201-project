@@ -7,8 +7,12 @@
 `ifndef CONSTANTS_SVH_
 `define CONSTANTS_SVH_
 
+parameter logic [31:0] ZERO = 32'd0;
 
-// Opcodes
+/*
+ * Define constants as required...
+ */
+ // Opcodes
 `define OPC_RTYPE   7'b011_0011
 `define OPC_ITYPE   7'b001_0011
 `define OPC_LOAD    7'b000_0011

@@ -1,0 +1,120 @@
+make: Entering directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'
+echo Vsim Compilation
+Vsim Compilation
+mkdir -p /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/sim/vsim/test_pd
+vlog -work /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work \
+	-suppress 7061 \
+	-sv \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/ \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests \
+	+define+MEM_PATH=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x\" \
+	+define+TEST_VECTOR=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test_vector.x\" \
+	+define+MEM_DEPTH=1048576 \
+	+define+GEN_TRACE=0 \
+	+define+TRACE_FILE=\"test1.trace\"\
+	+define+LINE_COUNT=154 \
+	+define+PATTERN_FILE=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.pattern\" \
+	+define+PATTERN_LINE_COUNT=2390 \
+	+define+PATTERN_DUMP_FILE=\"test1.dump\" \
+	+define+PATTERN_DUMP=0 \
+	+define+PATTERN_CHECK=1 \
+	+define+VCD_FILE=\"test1.vcd\" \
+	+define+TIMEOUT=50000 \
+	-stats=none /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package constants_svh_unit
+-- Compiling package memory_sv_unit
+-- Compiling module memory
+-- Compiling package fetch_sv_unit
+-- Compiling module fetch
+-- Compiling package control_sv_unit
+-- Compiling module control
+-- Compiling module branch_control
+-- Compiling package decode_sv_unit
+-- Compiling module decode
+-- Compiling package igen_sv_unit
+-- Compiling module igen
+-- Compiling module register_file
+-- Compiling package writeback_sv_unit
+-- Compiling module writeback
+-- Compiling package execute_sv_unit
+-- Compiling module execute
+-- Compiling package pd5_sv_unit
+-- Compiling module pd5
+-- Compiling module clockgen
+-- Compiling module design_wrapper
+-- Compiling module top
+
+Top level modules:
+	top
+rm -f /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+echo -e "vcd file \"test1.vcd\"\nvcd add -r /top/* \nrun -all" >> /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+echo Vsim Run
+Vsim Run
+vsim -suppress 3839 -c -do /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -suppress 3839 -c -do "/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro" /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top 
+# Start time: 17:46:26 on Mar 23,2026
+# Loading sv_std.std
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.clockgen
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.design_wrapper
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.pd5_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.pd5
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.fetch_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.fetch
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.memory_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.memory
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.decode_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.decode
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.igen_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.igen
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.control_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.control
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.register_file
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.branch_control
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.execute_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.execute
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.writeback_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.writeback
+# do /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+# IMEMORY: Loaded 154 32-bit words from /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x
+# IMEMORY: Loaded 154 32-bit words from /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x
+# X15DBG: w_pc=01000008 wbsel=1 alu_res=01000000 mem_data=00000013 wb_data=01000000
+# X15DBG: w_pc=01000040 wbsel=1 alu_res=01000248 mem_data=0000000c wb_data=01000248
+# X15DBG: w_pc=01000044 wbsel=2 alu_res=01000264 mem_data=0000000a wb_data=0000000a
+# FAILDBG_M: pc=01000058 insn=00c12823 opcode=23 rs2=12 exmem_rs2_data=00000078 mem_store_data=010fffdc memwb_rd=12 wb_data=010fffdc
+# X15DBG: w_pc=01000068 wbsel=1 alu_res=010fffd0 mem_data=0000000c wb_data=010fffd0
+# STALLDBG: type=   WB_ID d_pc=010000a4 idex_pc=010000a0 idex_insn=00b12423 memwb_rd=2 memwb_regwren=1 d_rs1=2 d_rs2=0
+# STALLDBG: type=LOAD_USE d_pc=01000194 idex_pc=01000190 idex_insn=00812783 memwb_rd=0 memwb_regwren=1 d_rs1=14 d_rs2=15
+# STALLDBG: type=   WB_ID d_pc=01000194 idex_pc=01000194 idex_insn=00000013 memwb_rd=14 memwb_regwren=1 d_rs1=14 d_rs2=15
+# STALLDBG: type=   WB_ID d_pc=01000194 idex_pc=01000194 idex_insn=00000013 memwb_rd=15 memwb_regwren=1 d_rs1=14 d_rs2=15
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# BRDBG: pc=01000194 funct3=4 rs1=14 rs2=15 rs1_data=00000000 rs2_data=00000008 fwd_rs1=00000000 fwd_rs2=00000008 taken=1 target=010000ac
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# STALLDBG: type=LOAD_USE d_pc=01000174 idex_pc=01000170 idex_insn=01c12783 memwb_rd=0 memwb_regwren=1 d_rs1=14 d_rs2=15
+# STALLDBG: type=   WB_ID d_pc=01000174 idex_pc=01000174 idex_insn=00000013 memwb_rd=14 memwb_regwren=1 d_rs1=14 d_rs2=15
+# STALLDBG: type=   WB_ID d_pc=01000174 idex_pc=01000174 idex_insn=00000013 memwb_rd=15 memwb_regwren=1 d_rs1=14 d_rs2=15
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000000 wb_data=00000000
+# STALLDBG: type=LOAD_USE d_pc=0100017c idex_pc=01000178 idex_insn=01812703 memwb_rd=0 memwb_regwren=1 d_rs1=14 d_rs2=15
+# STALLDBG: type=   WB_ID d_pc=0100017c idex_pc=0100017c idex_insn=00000013 memwb_rd=15 memwb_regwren=1 d_rs1=14 d_rs2=15
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000008 mem_data=ffffffb7 wb_data=00000008
+# STALLDBG: type=   WB_ID d_pc=0100017c idex_pc=0100017c idex_insn=00000013 memwb_rd=14 memwb_regwren=1 d_rs1=14 d_rs2=15
+# BRDBG: pc=0100017c funct3=4 rs1=14 rs2=15 rs1_data=00000001 rs2_data=00000008 fwd_rs1=00000001 fwd_rs2=00000008 taken=1 target=010000b8
+# STALLDBG: type=   WB_ID d_pc=010000c4 idex_pc=010000c0 idex_insn=fff78793 memwb_rd=14 memwb_regwren=1 d_rs1=14 d_rs2=15
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# ADD_MEM: exmem_rs2=0 exmem_rs2_data=00000000 memwb_rd=15 memwb_regwren=1 wb_data=3fffffff mem_store_data=00000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# ADD_MEM: exmem_rs2=15 exmem_rs2_data=3fffffff memwb_rd=0 memwb_regwren=1 wb_data=00000000 mem_store_data=3fffffff
+# M stage mismatch: expected PC=010000c8, ADDRESS=00000000, SIZE_ENCODED=1, DATA=010fffb0, got PC=010000c8, ADDRESS=00000000, SIZE_ENCODED=0, DATA=010fffb0
+# ** Fatal: Assertion error.
+#    Time: 160 ps  Scope: top.genblk3.tick_check File: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h Line: 45
+# ** Note: $finish    : /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h(45)
+#    Time: 160 ps  Iteration: 1  Region: /top/genblk3
+# End time: 17:46:26 on Mar 23,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+make: Leaving directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'

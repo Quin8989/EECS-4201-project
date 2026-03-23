@@ -4,15 +4,7 @@
  * Description: Branch control logic. Only sets the branch control bits based on the
  * branch instruction
  *
- * Inputs:
- * 1) 7-bit instruction opcode opcode_i
- * 2) 3-bit funct3 funct3_i
- * 3) 32-bit rs1 data rs1_i
- * 4) 32-bit rs2 data rs2_i
- *
- * Outputs:
- * 1) 1-bit operands are equal signal breq_o
- * 2) 1-bit rs1 < rs2 signal brlt_o
+ * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD3 -----------
  */
 
 module branch_control #(

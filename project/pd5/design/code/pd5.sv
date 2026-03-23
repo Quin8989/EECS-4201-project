@@ -26,6 +26,9 @@ module pd5 #(
     logic [AWIDTH-1:0] next_pc;
     logic branch_taken_ex;
     logic load_use_stall;
+    logic wb_to_id_stall;
+    logic wb_to_id_stall_raw;
+    logic wb_to_id_suppress;
 
     logic [AWIDTH-1:0] ifid_pc;
     logic [DWIDTH-1:0] ifid_insn;
@@ -233,7 +236,7 @@ module pd5 #(
         .rst       (reset),
         .next_pc_i (next_pc),
         .brtaken_i (branch_taken_ex),
-        .stall_i   (load_use_stall),
+        .stall_i   (load_use_stall | wb_to_id_stall),
         .pc_o      (f_pc),
         .insn_o    (f_insn)
     );
@@ -247,7 +250,7 @@ module pd5 #(
             // keep the same decode pc, but squash the instruction into a real nop
             ifid_pc   <= ifid_pc;
             ifid_insn <= NOP_INSN;
-        end else if (!load_use_stall) begin
+        end else if (!load_use_stall && !wb_to_id_stall) begin
             ifid_pc   <= f_pc;
             ifid_insn <= f_insn;
         end
@@ -330,24 +333,40 @@ module pd5 #(
         endcase
     end
 
-    logic wd_stall;
-    assign wd_stall =
+    // WB-to-ID hazard stall:
+    // WB->EX forwarding handles RAW hazards when the source leaves WB at the same
+    // cycle the dependent enters EX. This fails in three cases:
+    //   1. EX has a STORE (idex_memwren=1): store blocks the forwarding path.
+    //   2. EX has a BUBBLE (idex_insn==nop_insn): no instruction to receive the value.
+    //   3. WB is completing a LOAD (memwb_wbsel==WB_MEM): load result only lives one
+    //      cycle in WB; with 2+ instructions between load and dependent, forwarding misses.
+    // Exception for the BUBBLE case: if MEM stage already has a NEWER write to the same
+    // register (exmem_rd == memwb_rd), that newer value will be in MEM/WB next cycle
+    // and forwarded to EX -- no stall needed.
+    assign wb_to_id_stall_raw =
+        (idex_memwren || (idex_insn == NOP_INSN) || (memwb_wbsel == `WB_MEM)) &&
         memwb_regwren &&
         (memwb_rd != 5'd0) &&
-        !((idex_regwren && (idex_rd == memwb_rd)) ||
-          (exmem_regwren && (exmem_rd == memwb_rd))) &&
         (
-            (d_rs1 == memwb_rd) ||
-            (d_rs2 == memwb_rd)
+            (d_uses_rs1 && (d_rs1 == memwb_rd) && (d_rs1 != 5'd0)) ||
+            (d_uses_rs2 && (d_rs2 == memwb_rd) && (d_rs2 != 5'd0))
         );
 
+    assign wb_to_id_suppress =
+        (idex_insn == NOP_INSN) &&
+        exmem_regwren &&
+        (exmem_rd != 5'd0) &&
+        (exmem_rd == memwb_rd);
+
+    assign wb_to_id_stall = wb_to_id_stall_raw && !wb_to_id_suppress;
+
     assign load_use_stall =
-        (idex_memren &&
+        idex_memren &&
         (idex_rd != 5'd0) &&
         (
             ((d_uses_rs1 && (d_rs1 == idex_rd) && (d_rs1 != 5'd0))) ||
             ((d_uses_rs2 && (d_rs2 == idex_rd) && (d_rs2 != 5'd0)) && (d_opcode != `OPC_STORE))
-        )) || wd_stall;
+        );
 
 
     // ID/EX
@@ -374,7 +393,7 @@ module pd5 #(
             idex_memwren  <= 1'b0;
             idex_wbsel    <= `WB_OFF;
             idex_alusel   <= `ALU_ADD;
-        end else if (load_use_stall) begin
+        end else if (load_use_stall || wb_to_id_stall) begin
             idex_pc       <= d_pc;
             idex_insn     <= NOP_INSN;
             idex_opcode   <= `OPC_ITYPE;
@@ -398,7 +417,7 @@ module pd5 #(
             idex_alusel   <= `ALU_ADD;
         end else if (branch_taken_ex) begin
             // send a nop-looking instruction into execute at the same pc
-            idex_pc       <= ifid_pc;
+            idex_pc       <= d_pc;
             idex_insn     <= NOP_INSN;
             idex_opcode   <= `OPC_ITYPE;
             idex_rd       <= 5'd0;
@@ -410,8 +429,6 @@ module pd5 #(
             idex_imm      <= 32'd0;
             idex_rs1_data <= 32'd0;
             idex_rs2_data <= 32'd0;
-
-            // control for addi x0, x0, 0
             idex_pcsel    <= 1'b0;
             idex_immsel   <= 1'b1;
             idex_regwren  <= 1'b1;
@@ -468,7 +485,10 @@ module pd5 #(
         ex_operand_b = ex_fwd_rs2_data;
 
         case (idex_opcode)
-            `OPC_AUIPC,
+            `OPC_AUIPC: begin
+                ex_operand_a = idex_pc;
+                ex_operand_b = idex_imm;
+            end
             `OPC_JAL: begin
                 ex_operand_a = idex_pc;
                 ex_operand_b = idex_imm;
@@ -573,7 +593,7 @@ module pd5 #(
         end
     end
 
-    // proper store-data forwarding
+    // store-data forwarding
     always_comb begin
         mem_store_data = exmem_rs2_data;
 
@@ -633,9 +653,15 @@ module pd5 #(
     // program termination logic
     reg is_program = 0;
     always_ff @(posedge clk) begin
-        if (f_insn == 32'h00000073) $finish;
+        if (f_insn == 32'h00000073) begin
+            $display("RESULT: x15=%h", rf_x15);
+            $finish;
+        end
         if (f_insn == 32'h00008067) is_program = 1;
-        if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH)) $finish;
+        if (is_program && (register_file_0.registers[2] == 32'h01000000 + `MEM_DEPTH)) begin
+            $display("RESULT: x15=%h", rf_x15);
+            $finish;
+        end
     end
 
 endmodule : pd5

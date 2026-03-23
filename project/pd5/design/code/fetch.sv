@@ -1,14 +1,13 @@
 /*
  * Module: fetch
  *
- * Description: Fetch stage. Sends program counter to instruction memory and
- * returns the instruction. Supports branching and jumping via next_pc_i.
+ * Description: Fetch stage
+ *
+ * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD1 -----------
  *
  * Inputs:
  * 1) clk
  * 2) rst signal
- * 3) AWIDTH wide next PC next_pc_i
- * 4) 1-bit branch taken signal brtaken_i
  *
  * Outputs:
  * 1) AWIDTH wide program counter pc_o
@@ -27,6 +26,7 @@ module fetch #(
     input logic [AWIDTH-1:0] next_pc_i,
     input logic brtaken_i,
     input logic stall_i,
+
     output logic [AWIDTH-1:0] pc_o,
     output logic [DWIDTH-1:0] insn_o
 );
@@ -44,9 +44,13 @@ module fetch #(
     always_ff @(posedge clk) begin
         if (rst) begin
             pc_q <= BASEADDR;
+        end else if (stall_i) begin
+            // hold pc when we need a stall
+            pc_q <= pc_q;
         end else if (brtaken_i) begin
+            // branch or jump wins when we are not stalling
             pc_q <= next_pc_i;
-        end else if (!stall_i) begin
+        end else begin
             pc_q <= pc_q + 32'd4;
         end
     end

@@ -2,14 +2,8 @@
  * Module: igen
  *
  * Description: Immediate value generator
- *
- * Inputs:
- * 1) opcode opcode_i
- * 2) input instruction insn_i
- * Outputs:
- * 1) 32-bit immediate value imm_o
+ * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD2 -----------
  */
-
 `include "constants.svh"
 
 module igen #(
@@ -51,8 +45,11 @@ module igen #(
         return {insn[31:12], 12'b0};
     endfunction
 
+    // function automatic logic [DWIDTH-1:0] imm_shift_zext(input logic [DWIDTH-1:0] insn);
+    //     return {{DWIDTH-12{1'b0}}, insn[31:20]};
+    // endfunction
     function automatic logic [DWIDTH-1:0] imm_shift_zext(input logic [DWIDTH-1:0] insn);
-        return {{DWIDTH-12{1'b0}}, insn[31:20]};
+        return {{DWIDTH-5{1'b0}}, insn[24:20]};
     endfunction
 
     always_comb begin : immgen
@@ -71,7 +68,7 @@ module igen #(
             `OPC_JALR:   imm_reg = imm_i_sext(insn_i);
             `OPC_LOAD:   imm_reg = imm_i_sext(insn_i);
             `OPC_RTYPE:  imm_reg = 'd0;
-            default:     imm_reg = 'x;
+            default:     imm_reg = 'd0;
         endcase
     end
 

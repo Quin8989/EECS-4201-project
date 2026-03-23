@@ -1,16 +1,16 @@
 // ----  Probes  ----
-`define PROBE_F_PC          f_pc
-`define PROBE_F_INSN        f_insn
+`define PROBE_F_PC                f_pc
+`define PROBE_F_INSN              f_insn
 
-`define PROBE_D_PC          d_pc_probe
-`define PROBE_D_OPCODE      d_opcode_probe
-`define PROBE_D_RD          d_rd_probe
-`define PROBE_D_FUNCT3      d_funct3_probe
-`define PROBE_D_RS1         d_rs1_probe
-`define PROBE_D_RS2         d_rs2_probe
-`define PROBE_D_FUNCT7      d_funct7_probe
-`define PROBE_D_IMM         d_imm_probe
-`define PROBE_D_SHAMT       d_shamt_probe
+`define PROBE_D_PC                d_pc_probe
+`define PROBE_D_OPCODE            d_opcode_probe
+`define PROBE_D_RD                d_rd_probe
+`define PROBE_D_FUNCT3            d_funct3_probe
+`define PROBE_D_RS1               d_rs1_probe
+`define PROBE_D_RS2               d_rs2_probe
+`define PROBE_D_FUNCT7            d_funct7_probe
+`define PROBE_D_IMM               d_imm_probe
+`define PROBE_D_SHAMT             d_shamt_probe
 
 `define PROBE_R_WRITE_ENABLE      memwb_regwren
 `define PROBE_R_WRITE_DESTINATION memwb_rd

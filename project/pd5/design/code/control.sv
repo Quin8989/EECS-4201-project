@@ -1,24 +1,11 @@
 /*
  * Module: control
  *
- * Description: Sets control bits based on the decoded instruction.
- * Part of the decode stage but in its own module.
+ * Description: This module sets the control bits (control path) based on the decoded
+ * instruction. Note that this is part of the decode stage but housed in a separate
+ * module for better readability, debug and design purposes.
  *
- * Inputs:
- * 1) 7-bit opcode opcode_i
- * 2) 7-bit funct7 funct7_i
- * 3) 3-bit funct3 funct3_i
- *
- * Outputs:
- * 1) 1-bit PC select pcsel_o
- * 2) 1-bit Immediate select immsel_o
- * 3) 1-bit register write en regwren_o
- * 4) 1-bit rs1 select rs1sel_o
- * 5) 1-bit rs2 select rs2sel_o
- * 6) k-bit ALU select alusel_o
- * 7) 1-bit memory read en memren_o
- * 8) 1-bit memory write en memwren_o
- * 9) 2-bit writeback sel wbsel_o
+ * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD2 -----------
  */
 
 `include "constants.svh"
@@ -62,7 +49,7 @@ module control (
                     `F3_SRL_SRA: alusel_o = (funct7_i == `FUNCT7_ALT) ? `ALU_SRA : `ALU_SRL;
                     `F3_OR:      alusel_o = `ALU_OR;
                     `F3_AND:     alusel_o = `ALU_AND;
-                    default:     alusel_o = 'x;
+                    default:     alusel_o = `ALU_ADD;
                 endcase
             end
             `OPC_ITYPE: begin
@@ -79,7 +66,7 @@ module control (
                     `F3_AND:     alusel_o = `ALU_AND;
                     `F3_SLL:     alusel_o = `ALU_SLL;
                     `F3_SRL_SRA: alusel_o = (funct7_i == `FUNCT7_ALT) ? `ALU_SRA : `ALU_SRL;
-                    default:     alusel_o = 'x;
+                    default:     alusel_o = `ALU_ADD;
                 endcase
             end
             `OPC_LOAD: begin
@@ -128,15 +115,15 @@ module control (
                 rs2sel_o  = 1'b1;
             end
             default: begin
-                pcsel_o   = 'x;
-                immsel_o  = 'x;
-                regwren_o = 'x;
-                rs1sel_o  = 'x;
-                rs2sel_o  = 'x;
-                memren_o  = 'x;
-                memwren_o = 'x;
-                wbsel_o   = 'x;
-                alusel_o  = 'x;
+                pcsel_o   = 1'b0;
+                immsel_o  = 1'b0;
+                regwren_o = 1'b0;
+                rs1sel_o  = 1'b0;
+                rs2sel_o  = 1'b0;
+                memren_o  = 1'b0;
+                memwren_o = 1'b0;
+                wbsel_o   = `WB_OFF;
+                alusel_o  = `ALU_ADD;
             end
         endcase
     end
