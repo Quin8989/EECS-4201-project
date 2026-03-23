@@ -1,0 +1,20 @@
+# ModelSim / QuestaSim build artifacts
+work/
+transcript
+*.vstf
+run.macro
+
+# Waveform dumps
+*.vcd
+*.wlf
+*.vgh
+
+# Verilator build artifacts
+obj_dir/
+
+# Simulation outputs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
