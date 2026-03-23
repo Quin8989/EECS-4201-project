@@ -1,0 +1,754 @@
+make: Entering directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'
+echo Vsim Compilation
+Vsim Compilation
+mkdir -p /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/sim/vsim/test_pd
+vlog -work /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work \
+	-suppress 7061 \
+	-sv \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/ \
+	+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests \
+	+define+MEM_PATH=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x\" \
+	+define+TEST_VECTOR=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test_vector.x\" \
+	+define+MEM_DEPTH=1048576 \
+	+define+GEN_TRACE=0 \
+	+define+TRACE_FILE=\"test1.trace\"\
+	+define+LINE_COUNT=154 \
+	+define+PATTERN_FILE=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.pattern\" \
+	+define+PATTERN_LINE_COUNT=2390 \
+	+define+PATTERN_DUMP_FILE=\"test1.dump\" \
+	+define+PATTERN_DUMP=0 \
+	+define+PATTERN_CHECK=0 \
+	+define+VCD_FILE=\"test1.vcd\" \
+	+define+TIMEOUT=50000 \
+	-stats=none /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling package constants_svh_unit
+-- Compiling package memory_sv_unit
+-- Compiling module memory
+-- Compiling package fetch_sv_unit
+-- Compiling module fetch
+-- Compiling package control_sv_unit
+-- Compiling module control
+-- Compiling module branch_control
+-- Compiling package decode_sv_unit
+-- Compiling module decode
+-- Compiling package igen_sv_unit
+-- Compiling module igen
+-- Compiling module register_file
+-- Compiling package writeback_sv_unit
+-- Compiling module writeback
+-- Compiling package execute_sv_unit
+-- Compiling module execute
+-- Compiling package pd5_sv_unit
+-- Compiling module pd5
+-- Compiling module clockgen
+-- Compiling module design_wrapper
+-- Compiling module top
+
+Top level modules:
+	top
+rm -f /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+echo -e "vcd file \"test1.vcd\"\nvcd add -r /top/* \nrun -all" >> /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+echo Vsim Run
+Vsim Run
+vsim -suppress 3839 -c -do /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -suppress 3839 -c -do "/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro" /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top 
+# Start time: 05:43:39 on Mar 23,2026
+# Loading sv_std.std
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.clockgen
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.design_wrapper
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.pd5_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.pd5
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.fetch_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.fetch
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.memory_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.memory
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.decode_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.decode
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.igen_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.igen
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.control_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.control
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.register_file
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.branch_control
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.execute_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.execute
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.writeback_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.writeback
+# do /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+# IMEMORY: Loaded 154 32-bit words from /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x
+# IMEMORY: Loaded 154 32-bit words from /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x
+# X15DBG: w_pc=01000008 wbsel=1 alu_res=01000000 mem_data=00000013 wb_data=01000000
+# X15DBG: w_pc=01000040 wbsel=1 alu_res=01000248 mem_data=0000000c wb_data=01000248
+# X15DBG: w_pc=01000044 wbsel=2 alu_res=01000264 mem_data=0000000a wb_data=0000000a
+# FAILDBG_M: pc=01000058 insn=00c12823 opcode=23 rs2=12 exmem_rs2_data=00000078 mem_store_data=00000078 memwb_rd=12 wb_data=010fffdc
+# X15DBG: w_pc=01000068 wbsel=1 alu_res=010fffd0 mem_data=0000000c wb_data=010fffd0
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=09000000 wb_data=09000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=0000000a mem_data=00000000 wb_data=0000000a
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=09000000 wb_data=09000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000009 mem_data=00000007 wb_data=00000009
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000001 mem_data=00000001 wb_data=40000001
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd1 mem_data=00000000 wb_data=410fffd1
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd2 mem_data=00000000 wb_data=010fffd2
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd2 mem_data=00090000 wb_data=00090000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=48ffffff mem_data=00000000 wb_data=48ffffff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=23fffffc mem_data=00000000 wb_data=23fffffc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=4a0fffcf mem_data=00000000 wb_data=4a0fffcf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=4a0fffcf mem_data=00000c00 wb_data=00000c00
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd2 mem_data=00000000 wb_data=010fffd2
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000bfd mem_data=00000000 wb_data=00000bfd
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000004 mem_data=00000023 wb_data=00000004
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=000c0000 wb_data=000c0000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=4c00000b mem_data=00000001 wb_data=4c00000b
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=3000002c mem_data=00002603 wb_data=3000002c
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=4d0fffdb mem_data=00000000 wb_data=4d0fffdb
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=4d0fffdb mem_data=00006300 wb_data=00006300
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=000062fc mem_data=00000000 wb_data=000062fc
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000001 mem_data=00000001 wb_data=40000001
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd1 mem_data=00000000 wb_data=410fffd1
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd2 mem_data=00000063 wb_data=00000063
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=400062ff mem_data=00000000 wb_data=400062ff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=00018bfc mem_data=00000000 wb_data=00018bfc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=411062cf mem_data=00000000 wb_data=411062cf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=411062cf mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffc mem_data=00000000 wb_data=fffffffc
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000002 mem_data=00000001 wb_data=40000002
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd2 mem_data=00000000 wb_data=410fffd2
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd3 mem_data=00000000 wb_data=010fffd3
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd3 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000004 mem_data=00000023 wb_data=00000004
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffc mem_data=00000000 wb_data=fffffffc
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000005 mem_data=00000026 wb_data=00000005
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=4000000b mem_data=00000001 wb_data=4000000b
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=0000002c mem_data=00002603 wb_data=0000002c
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=410fffdb mem_data=00000000 wb_data=410fffdb
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=410fffdb mem_data=00006300 wb_data=00006300
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000063 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=000062fb mem_data=00000000 wb_data=000062fb
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000001 mem_data=00000001 wb_data=40000001
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd1 mem_data=00000000 wb_data=410fffd1
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd2 mem_data=00000063 wb_data=00000063
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=400062ff mem_data=00000000 wb_data=400062ff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=00018bfc mem_data=00000000 wb_data=00018bfc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=411062cf mem_data=00000000 wb_data=411062cf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=411062cf mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffb mem_data=00000000 wb_data=fffffffb
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000002 mem_data=00000001 wb_data=40000002
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd2 mem_data=00000000 wb_data=410fffd2
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd3 mem_data=00000000 wb_data=010fffd3
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd3 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000004 mem_data=00000023 wb_data=00000004
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffb mem_data=00000000 wb_data=fffffffb
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000003 mem_data=fffffffd wb_data=40000003
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd3 mem_data=00000000 wb_data=410fffd3
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd4 mem_data=00000000 wb_data=010fffd4
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd4 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000005 mem_data=00000026 wb_data=00000005
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffb mem_data=00000000 wb_data=fffffffb
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000006 mem_data=00000011 wb_data=00000006
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=4000000b mem_data=00000001 wb_data=4000000b
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=0000002c mem_data=00002603 wb_data=0000002c
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=410fffdb mem_data=00000000 wb_data=410fffdb
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=410fffdb mem_data=00006300 wb_data=00006300
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000063 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=000062fa mem_data=00000000 wb_data=000062fa
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000001 mem_data=00000001 wb_data=40000001
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd1 mem_data=00000000 wb_data=410fffd1
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd2 mem_data=00000063 wb_data=00000063
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=400062ff mem_data=00000000 wb_data=400062ff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=00018bfc mem_data=00000000 wb_data=00018bfc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=411062cf mem_data=00000000 wb_data=411062cf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=411062cf mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffa mem_data=00000000 wb_data=fffffffa
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000002 mem_data=00000001 wb_data=40000002
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd2 mem_data=00000000 wb_data=410fffd2
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd3 mem_data=00000000 wb_data=010fffd3
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd3 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000004 mem_data=00000023 wb_data=00000004
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffa mem_data=00000000 wb_data=fffffffa
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000003 mem_data=fffffffd wb_data=40000003
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd3 mem_data=00000000 wb_data=410fffd3
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd4 mem_data=00000000 wb_data=010fffd4
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd4 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000005 mem_data=00000026 wb_data=00000005
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffa mem_data=00000000 wb_data=fffffffa
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000004 mem_data=00000023 wb_data=40000004
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd4 mem_data=00000000 wb_data=410fffd4
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd5 mem_data=00000000 wb_data=010fffd5
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd5 mem_data=04000000 wb_data=04000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000006 mem_data=00000011 wb_data=00000006
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffffa mem_data=00000000 wb_data=fffffffa
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000007 mem_data=00000002 wb_data=00000007
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=4000000b mem_data=00000001 wb_data=4000000b
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=0000002c mem_data=00002603 wb_data=0000002c
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=410fffdb mem_data=00000000 wb_data=410fffdb
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=410fffdb mem_data=00006300 wb_data=00006300
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000063 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=000062f9 mem_data=00000000 wb_data=000062f9
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000001 mem_data=00000001 wb_data=40000001
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd1 mem_data=00000000 wb_data=410fffd1
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd2 mem_data=00000063 wb_data=00000063
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=400062ff mem_data=00000000 wb_data=400062ff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=00018bfc mem_data=00000000 wb_data=00018bfc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=411062cf mem_data=00000000 wb_data=411062cf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=411062cf mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff9 mem_data=00000000 wb_data=fffffff9
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000002 mem_data=00000001 wb_data=40000002
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd2 mem_data=00000000 wb_data=410fffd2
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd3 mem_data=00000000 wb_data=010fffd3
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd3 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000004 mem_data=00000023 wb_data=00000004
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff9 mem_data=00000000 wb_data=fffffff9
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000003 mem_data=fffffffd wb_data=40000003
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd3 mem_data=00000000 wb_data=410fffd3
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd4 mem_data=00000000 wb_data=010fffd4
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd4 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000005 mem_data=00000026 wb_data=00000005
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff9 mem_data=00000000 wb_data=fffffff9
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000004 mem_data=00000023 wb_data=40000004
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd4 mem_data=00000000 wb_data=410fffd4
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd5 mem_data=00000000 wb_data=010fffd5
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd5 mem_data=04000000 wb_data=04000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000006 mem_data=00000011 wb_data=00000006
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff9 mem_data=00000000 wb_data=fffffff9
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000005 mem_data=00000026 wb_data=40000005
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd5 mem_data=00000000 wb_data=410fffd5
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd6 mem_data=00000000 wb_data=010fffd6
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd6 mem_data=00040000 wb_data=00040000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=43ffffff mem_data=00000000 wb_data=43ffffff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=0ffffffc mem_data=00000000 wb_data=0ffffffc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=450fffcf mem_data=00000000 wb_data=450fffcf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=450fffcf mem_data=00000c00 wb_data=00000c00
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000063 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd6 mem_data=00000000 wb_data=010fffd6
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000007 mem_data=00000002 wb_data=00000007
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000bf9 mem_data=00000000 wb_data=00000bf9
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000008 mem_data=ffffffb7 wb_data=00000008
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=010000ac wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd0 mem_data=0000000c wb_data=410fffd0
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd1 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=4000000b mem_data=00000001 wb_data=4000000b
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=0000002c mem_data=00002603 wb_data=0000002c
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=410fffdb mem_data=00000000 wb_data=410fffdb
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=410fffdb mem_data=00006300 wb_data=00006300
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000002 mem_data=00000001 wb_data=00000002
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=000062f8 mem_data=00000000 wb_data=000062f8
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000001 mem_data=00000001 wb_data=40000001
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd1 mem_data=00000000 wb_data=410fffd1
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd2 mem_data=00000063 wb_data=00000063
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=400062ff mem_data=00000000 wb_data=400062ff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=00018bfc mem_data=00000000 wb_data=00018bfc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=411062cf mem_data=00000000 wb_data=411062cf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=411062cf mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd2 mem_data=00000063 wb_data=010fffd2
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000002 wb_data=00000002
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000003 mem_data=fffffffd wb_data=00000003
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff8 mem_data=00000000 wb_data=fffffff8
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000002 mem_data=00000001 wb_data=40000002
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000008 mem_data=000007b7 wb_data=00000008
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd2 mem_data=00000000 wb_data=410fffd2
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd3 mem_data=00000000 wb_data=010fffd3
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd3 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000003 wb_data=00000003
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000004 mem_data=00000023 wb_data=00000004
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff8 mem_data=00000000 wb_data=fffffff8
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000003 mem_data=fffffffd wb_data=40000003
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=0000000c mem_data=ffffa883 wb_data=0000000c
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd3 mem_data=00000000 wb_data=410fffd3
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd4 mem_data=00000000 wb_data=010fffd4
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd4 mem_data=0c000000 wb_data=0c000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000004 wb_data=00000004
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000005 mem_data=00000026 wb_data=00000005
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff8 mem_data=00000000 wb_data=fffffff8
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000004 mem_data=00000023 wb_data=40000004
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000010 mem_data=ffff8713 wb_data=00000010
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd4 mem_data=00000000 wb_data=410fffd4
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd5 mem_data=00000000 wb_data=010fffd5
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd5 mem_data=000c0000 wb_data=000c0000
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=4bffffff mem_data=00000000 wb_data=4bffffff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=2ffffffc mem_data=00000000 wb_data=2ffffffc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=4d0fffcf mem_data=00000000 wb_data=4d0fffcf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=4d0fffcf mem_data=00000c00 wb_data=00000c00
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000063 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd5 mem_data=00000000 wb_data=010fffd5
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000005 wb_data=00000005
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000006 mem_data=00000011 wb_data=00000006
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=00000bf8 mem_data=00000000 wb_data=00000bf8
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000005 mem_data=00000026 wb_data=40000005
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000014 mem_data=00002803 wb_data=00000014
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd5 mem_data=00000000 wb_data=410fffd5
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd6 mem_data=0000000c wb_data=010fffd6
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd6 mem_data=0000000c wb_data=0000000c
+# X15DBG: w_pc=010000f4 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000f8 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000fc wbsel=1 alu_res=40000bff mem_data=00000000 wb_data=40000bff
+# X15DBG: w_pc=01000100 wbsel=1 alu_res=00002ffc mem_data=00000000 wb_data=00002ffc
+# X15DBG: w_pc=01000108 wbsel=1 alu_res=41100bcf mem_data=00000000 wb_data=41100bcf
+# X15DBG: w_pc=0100010c wbsel=2 alu_res=41100bcf mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000114 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000118 wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=01000128 wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=0100012c wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=01000130 wbsel=1 alu_res=410fffcf mem_data=00000000 wb_data=410fffcf
+# X15DBG: w_pc=01000134 wbsel=1 alu_res=043fff3c mem_data=00000000 wb_data=043fff3c
+# X15DBG: w_pc=0100013c wbsel=1 alu_res=421fff9f mem_data=00000000 wb_data=421fff9f
+# X15DBG: w_pc=01000148 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=0100014c wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=01000154 wbsel=1 alu_res=010fffd6 mem_data=0000000c wb_data=010fffd6
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000006 wb_data=00000006
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000007 mem_data=00000002 wb_data=00000007
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff8 mem_data=00000000 wb_data=fffffff8
+# X15DBG: w_pc=010000bc wbsel=1 alu_res=40000000 mem_data=00000013 wb_data=40000000
+# X15DBG: w_pc=010000c0 wbsel=1 alu_res=3fffffff mem_data=00000000 wb_data=3fffffff
+# X15DBG: w_pc=010000c4 wbsel=1 alu_res=40000006 mem_data=00000011 wb_data=40000006
+# X15DBG: w_pc=010000c8 wbsel=1 alu_res=00000018 mem_data=ffff8713 wb_data=00000018
+# X15DBG: w_pc=010000d0 wbsel=1 alu_res=410fffd6 mem_data=00000000 wb_data=410fffd6
+# X15DBG: w_pc=010000d8 wbsel=2 alu_res=010fffc8 mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=010000dc wbsel=1 alu_res=0000001c mem_data=00002503 wb_data=0000001c
+# X15DBG: w_pc=010000e4 wbsel=1 alu_res=010fffd7 mem_data=00000000 wb_data=010fffd7
+# X15DBG: w_pc=010000e8 wbsel=2 alu_res=010fffd7 mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=01000160 wbsel=2 alu_res=010fffc8 mem_data=00000007 wb_data=00000007
+# X15DBG: w_pc=01000164 wbsel=1 alu_res=00000008 mem_data=ffffffb7 wb_data=00000008
+# X15DBG: w_pc=01000170 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000174 wbsel=1 alu_res=fffffff8 mem_data=00000000 wb_data=fffffff8
+# X15DBG: w_pc=01000180 wbsel=2 alu_res=010fffcc mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000184 wbsel=1 alu_res=00000009 mem_data=00000007 wb_data=00000009
+# X15DBG: w_pc=01000190 wbsel=2 alu_res=010fffb8 mem_data=00000008 wb_data=00000008
+# X15DBG: w_pc=01000078 wbsel=1 alu_res=010fffd0 mem_data=0000000c wb_data=010fffd0
+# X15DBG: w_pc=010001b0 wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=01000210 wbsel=1 alu_res=00000006 mem_data=00000011 wb_data=00000006
+# X15DBG: w_pc=010001c4 wbsel=2 alu_res=010fffbc mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=010001c8 wbsel=1 alu_res=00000000 mem_data=00000113 wb_data=00000000
+# X15DBG: w_pc=010001d0 wbsel=1 alu_res=010fffd0 mem_data=0000000c wb_data=010fffd0
+# X15DBG: w_pc=010001d8 wbsel=2 alu_res=010fffbc mem_data=00000000 wb_data=00000000
+# X15DBG: w_pc=010001dc wbsel=1 alu_res=00000001 mem_data=00000001 wb_data=00000001
+# X15DBG: w_pc=010001e0 wbsel=1 alu_res=00000004 mem_data=00002623 wb_data=00000004
+# X15DBG: w_pc=010001e8 wbsel=1 alu_res=010fffd1 mem_data=00000000 wb_data=010fffd1
+# X15DBG: w_pc=010001ec wbsel=2 alu_res=010fffd1 mem_data=00000000 wb_data=00000000
+# WB_PASSFAIL: w_pc=0100023c x15=00000000 w_enable=1 w_dest=15 w_data=00000000
+# X15DBG: w_pc=0100023c wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=010001f8 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# X15DBG: w_pc=01000084 wbsel=1 alu_res=00000000 mem_data=00000013 wb_data=00000000
+# ** Note: $finish    : /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv(656)
+#    Time: 3375 ps  Iteration: 1  Instance: /top/dut/core
+# End time: 05:43:39 on Mar 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+make: Leaving directory '/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts'

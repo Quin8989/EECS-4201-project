@@ -1,0 +1,41 @@
+# vsim -suppress 3839 -c -do "/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro" /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top 
+# Start time: 15:40:09 on Mar 23,2026
+# Loading sv_std.std
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.top
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.clockgen
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.design_wrapper
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.pd5_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.pd5
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.fetch_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.fetch
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.memory_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.memory
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.decode_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.decode
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.igen_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.igen
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.control_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.control
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.register_file
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.branch_control
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.execute_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.execute
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.writeback_sv_unit
+# Loading /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work.writeback
+# do /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts/run.macro
+# IMEMORY: Loaded 154 32-bit words from /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x
+# IMEMORY: Loaded 154 32-bit words from /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x
+# X15DBG: w_pc=01000008 wbsel=1 alu_res=01000000 mem_data=00000013 wb_data=01000000
+# X15DBG: w_pc=01000040 wbsel=1 alu_res=01000248 mem_data=0000000c wb_data=01000248
+# X15DBG: w_pc=01000044 wbsel=2 alu_res=01000264 mem_data=0000000a wb_data=0000000a
+# FAILDBG_M: pc=01000058 insn=00c12823 opcode=23 rs2=12 exmem_rs2_data=00000078 mem_store_data=010fffdc memwb_rd=12 wb_data=010fffdc
+# X15DBG: w_pc=01000068 wbsel=1 alu_res=010fffd0 mem_data=0000000c wb_data=010fffd0
+# F stage mismatch: expected PC=0100007c, INSN=00078513, got PC=01000098, INSN=fe010113
+# D stage mismatch: expected PC=01000078, OPCODE=13, RD=0f, RS1=02, RS2=00, FUNCT3=0, FUNCT7=00, IMM=00000000, got PC=01000074, OPCODE=13, RD=00, RS1=00, RS2=00, FUNCT3=0, FUNCT7=00, IMM=00000000 
+# R stage mismatch: expected READ_RS1=02, READ_RS2=00, READ_RS1_DATA=010fffd0, READ_RS2_DATA=00000000, got READ_RS1=00, READ_RS2=00, READ_RS1_DATA=00000000, READ_RS2_DATA=00000000
+# ** Fatal: Assertion error.
+#    Time: 74 ps  Scope: top.genblk3.tick_check File: /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h Line: 45
+# ** Note: $finish    : /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h(45)
+#    Time: 74 ps  Iteration: 1  Region: /top/genblk3
+# End time: 15:40:09 on Mar 23,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

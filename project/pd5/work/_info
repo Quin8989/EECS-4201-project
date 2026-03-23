@@ -1,0 +1,605 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/scripts
+vbranch_control
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1774294808
+!i10b 1
+!s100 __?C4mjhFHX:cYYXLDS4E3
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I6PGJQ>8:ZZXdc5Rd8MUeO0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1774218056
+8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv
+!i122 130
+L0 10 25
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1774294808.000000
+!s107 /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/tasks.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_dump.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/trace_dump.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/fields.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/tracegen.v|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design//probes.svh|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh|
+Z7 !s90 -work|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work|-suppress|7061|-sv|+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code|+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/|+incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests|+define+MEM_PATH="/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x"|+define+TEST_VECTOR="/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test_vector.x"|+define+MEM_DEPTH=1048576|+define+GEN_TRACE=0|+define+TRACE_FILE="test1.trace"|+define+LINE_COUNT=154|+define+PATTERN_FILE="/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.pattern"|+define+PATTERN_LINE_COUNT=2390|+define+PATTERN_DUMP_FILE="test1.dump"|+define+PATTERN_DUMP=0|+define+PATTERN_CHECK=1|+define+VCD_FILE="test1.vcd"|+define+TIMEOUT=50000|-stats=none|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv|
+!i113 1
+Z8 o-suppress 7061 -work /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work -sv
+Z9 !s92 -suppress 7061 -work /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/work -sv +incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code +incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/ +incdir+/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests +define+MEM_PATH=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.x\" +define+TEST_VECTOR=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test_vector.x\" +define+MEM_DEPTH=1048576 +define+GEN_TRACE=0 +define+TRACE_FILE=\"test1.trace\" +define+LINE_COUNT=154 +define+PATTERN_FILE=\"/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/data/test1.pattern\" +define+PATTERN_LINE_COUNT=2390 +define+PATTERN_DUMP_FILE=\"test1.dump\" +define+PATTERN_DUMP=0 +define+PATTERN_CHECK=1 +define+VCD_FILE=\"test1.vcd\" +define+TIMEOUT=50000
+Z10 tCvgOpt 0
+vclockgen
+R1
+R2
+!i10b 1
+!s100 XGla>YnT?aHlG7Lg@<j9J1
+R3
+I=cC=WH@nkZ7iL>a@Z7n?D1
+R4
+S1
+R0
+Z11 w1769360179
+8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv
+!i122 130
+L0 11 39
+R5
+r1
+!s85 0
+31
+R6
+Z12 !s107 /eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/tasks.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_dump.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/trace_dump.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/fields.h|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/tracegen.v|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design//probes.svh|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/clockgen.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/branch_control.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv|/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh|
+R7
+!i113 1
+R8
+R9
+R10
+Xconstants_svh_unit
+R1
+R2
+VP8Je7<L;g;eJo<e76:i1b2
+r1
+!s85 0
+!i10b 1
+!s100 ddGBb3^DbJ`G8H:T^cP>A2
+IP8Je7<L;g;eJo<e76:i1b2
+!i103 1
+S1
+R0
+Z13 w1774218335
+8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh
+Z14 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/constants.svh
+!i122 130
+Z15 L0 10 0
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vcontrol
+R1
+DXx4 work 15 control_sv_unit 0 22 lo<BF6mGB`@8TA04z7<CF3
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 hc8I`;DL]^hD8f;05:FkE3
+IVa=>UP;SeX8iBOo?Fa[T_3
+!s105 control_sv_unit
+S1
+R0
+Z16 w1774252790
+Z17 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv
+Z18 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/control.sv
+!i122 130
+L0 13 119
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xcontrol_sv_unit
+R1
+R2
+Vlo<BF6mGB`@8TA04z7<CF3
+r1
+!s85 0
+!i10b 1
+!s100 1D>m>]6Z[7gg2cB_c30903
+Ilo<BF6mGB`@8TA04z7<CF3
+!i103 1
+S1
+R0
+R16
+R17
+R18
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vdecode
+R1
+DXx4 work 14 decode_sv_unit 0 22 PAl;j^fO]J`1JJk<<T6P`0
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 ?=0A]WoBLh`ZG=KRL8mjU1
+IQ7?h`GY6`kDea]U:8hkKl2
+!s105 decode_sv_unit
+S1
+R0
+Z19 w1774252543
+Z20 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv
+Z21 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/decode.sv
+!i122 130
+L0 11 45
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xdecode_sv_unit
+R1
+R2
+VPAl;j^fO]J`1JJk<<T6P`0
+r1
+!s85 0
+!i10b 1
+!s100 0W]z1DN`L8?5hWGHDKMTz2
+IPAl;j^fO]J`1JJk<<T6P`0
+!i103 1
+S1
+R0
+R19
+R20
+R21
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vdesign_wrapper
+R1
+R2
+!i10b 1
+!s100 iWNUgmJmDGG<L1lkHib>b2
+R3
+IYA0FboK=]ei5j_hKH@6Ym3
+R4
+S1
+R0
+R11
+8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/design_wrapper.sv
+!i122 130
+L0 6 10
+R5
+r1
+!s85 0
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vexecute
+R1
+DXx4 work 15 execute_sv_unit 0 22 Yk1^5Pn`XW<>=?fdf3Z2E1
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 :L0:UM]Cg:GTlzg9H>1Il2
+I5[Qz8_1BRk1kQmCc0azc^2
+!s105 execute_sv_unit
+S1
+R0
+w1774199885
+Z22 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv
+Z23 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/execute.sv
+!i122 130
+L0 17 32
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xexecute_sv_unit
+R1
+R2
+VYk1^5Pn`XW<>=?fdf3Z2E1
+r1
+!s85 0
+!i10b 1
+!s100 722dE9<aZKji^JedZYW^]1
+IYk1^5Pn`XW<>=?fdf3Z2E1
+!i103 1
+S1
+R0
+R13
+R22
+R23
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vfetch
+R1
+DXx4 work 13 fetch_sv_unit 0 22 A=kQo@[2]NBJ]iAE]h?BX0
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 D^UjkWH6N69jj=WTIc[=>3
+I6DWQU3No4nBS1PLb8VEY[0
+!s105 fetch_sv_unit
+S1
+R0
+Z24 w1774226386
+Z25 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv
+Z26 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/fetch.sv
+!i122 130
+L0 19 58
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xfetch_sv_unit
+R1
+R2
+VA=kQo@[2]NBJ]iAE]h?BX0
+r1
+!s85 0
+!i10b 1
+!s100 6EO6<R_NYMCEl5CGhH^Nh0
+IA=kQo@[2]NBJ]iAE]h?BX0
+!i103 1
+S1
+R0
+R24
+R25
+R26
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vigen
+R1
+DXx4 work 12 igen_sv_unit 0 22 e2DdSAo:Q96e:foakYc421
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 O?23MSRR>hUfGOZ3c8BDg0
+Imlg@B[]M7H<OQ:?K_hSo@1
+!s105 igen_sv_unit
+S1
+R0
+Z27 w1774253036
+Z28 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv
+Z29 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/igen.sv
+!i122 130
+L0 9 67
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xigen_sv_unit
+R1
+R2
+Ve2DdSAo:Q96e:foakYc421
+r1
+!s85 0
+!i10b 1
+!s100 i?BD?XSEbDm6P6SA73gC:1
+Ie2DdSAo:Q96e:foakYc421
+!i103 1
+S1
+R0
+R27
+R28
+R29
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vmemory
+R1
+DXx4 work 14 memory_sv_unit 0 22 :zd[9L[QWC1ZG:J2ClCRQ0
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 iKZR_=Dck>l1lVRJ>I<4M1
+I4lRAZj0V1JK[^9WM;1nU20
+!s105 memory_sv_unit
+S1
+R0
+Z30 w1774219910
+Z31 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv
+Z32 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/memory.sv
+!i122 130
+L0 33 96
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xmemory_sv_unit
+R1
+R2
+V:zd[9L[QWC1ZG:J2ClCRQ0
+r1
+!s85 0
+!i10b 1
+!s100 lgV<AQD2Xo]VI;aBo_aJ93
+I:zd[9L[QWC1ZG:J2ClCRQ0
+!i103 1
+S1
+R0
+R30
+R31
+R32
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vpd5
+R1
+DXx4 work 11 pd5_sv_unit 0 22 0ZRh<fo1a6lEI;_Q2K6Pf2
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 =a?5U5ADY>??UiST7Pj;B3
+I<WfAT^zfFEVSRVPcFRlC=1
+!s105 pd5_sv_unit
+S1
+R0
+Z33 w1774294795
+Z34 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv
+Z35 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/pd5.sv
+!i122 130
+L0 13 726
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xpd5_sv_unit
+R1
+R2
+V0ZRh<fo1a6lEI;_Q2K6Pf2
+r1
+!s85 0
+!i10b 1
+!s100 zmUFEZQCh0nBnl=5U5el[1
+I0ZRh<fo1a6lEI;_Q2K6Pf2
+!i103 1
+S1
+R0
+R33
+R34
+R35
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vregister_file
+R1
+R2
+!i10b 1
+!s100 X=c`oXD;H<6B;AE35YVa01
+R3
+IAUjR0>PE3C?HU8aFWOb=n0
+R4
+S1
+R0
+w1774245219
+8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/register_file.sv
+!i122 130
+L0 11 34
+R5
+r1
+!s85 0
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vtop
+R1
+R2
+!i10b 1
+!s100 D5I>g=L:9>j@XO5V6a8YS0
+R3
+I?0=S>a6M<Ll]hfUjVe6?I3
+R4
+S1
+R0
+w1774199745
+8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/test_pd.sv
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/tracegen.v
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/fields.h
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/trace_dump.h
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_dump.h
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/pattern_check.h
+F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/verif/tests/tasks.h
+!i122 130
+L0 4 469
+R5
+r1
+!s85 0
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+vwriteback
+R1
+DXx4 work 17 writeback_sv_unit 0 22 GO^QNZHWZBiCgTUA]JSK73
+R2
+R4
+r1
+!s85 0
+!i10b 1
+!s100 W[g7fk@4ocK0nlcZ35J4j2
+Iom_oF56Q4_mlo?oK;VbaU3
+!s105 writeback_sv_unit
+S1
+R0
+Z36 w1774220047
+Z37 8/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv
+Z38 F/eecs/home/arshia04/EECS-4201-project-arshia04/project/pd5/design/code/writeback.sv
+!i122 130
+L0 18 26
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
+Xwriteback_sv_unit
+R1
+R2
+VGO^QNZHWZBiCgTUA]JSK73
+r1
+!s85 0
+!i10b 1
+!s100 L:ZV2H?Y6Meoko7AF0kfQ2
+IGO^QNZHWZBiCgTUA]JSK73
+!i103 1
+S1
+R0
+R36
+R37
+R38
+R14
+!i122 130
+R15
+R5
+31
+R6
+R12
+R7
+!i113 1
+R8
+R9
+R10
