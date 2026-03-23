@@ -7,10 +7,10 @@
  * 1) PC pc_i
  * 2) result from alu alu_res_i
  * 3) data from memory memory_data_i
- * 4) data to select for write-back wbsel_i
+ * 4) branch taken signal brtaken_i
  *
  * Outputs:
- * 1) DWIDTH wide write back data writeback_data_o
+ * 1) DWIDTH wide write back data write_data_o
  */
 
 `include "constants.svh"

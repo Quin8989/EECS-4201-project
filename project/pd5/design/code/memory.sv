@@ -1,8 +1,8 @@
 /*
+ * -------- REPLACE THIS FILE WITH THE MEMORY MODULE DEVELOPED IN PD1 -----------
  * Module: memory
  *
- * Description: Byte-addressable memory. Supports read and write
- * with different access sizes (byte, halfword, word).
+ * Description: Byte-addressable memory implementation. Supports both read and write.
  *
  * Inputs:
  * 1) clk
@@ -11,7 +11,6 @@
  * 4) DWIDTH data to write data_i
  * 5) read enable signal read_en_i
  * 6) write enable signal write_en_i
- * 7) 3-bit funct3 funct3_i for load/store type
  *
  * Outputs:
  * 1) DWIDTH data output data_o
