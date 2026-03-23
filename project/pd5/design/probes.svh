@@ -12,13 +12,13 @@
 `define PROBE_D_IMM               d_imm_probe
 `define PROBE_D_SHAMT             d_shamt_probe
 
-`define PROBE_R_WRITE_ENABLE      r_write_enable
-`define PROBE_R_WRITE_DESTINATION r_write_destination
-`define PROBE_R_WRITE_DATA        r_write_data
-`define PROBE_R_READ_RS1          r_read_rs1
-`define PROBE_R_READ_RS2          r_read_rs2
-`define PROBE_R_READ_RS1_DATA     r_read_rs1_data
-`define PROBE_R_READ_RS2_DATA     r_read_rs2_data
+`define PROBE_R_WRITE_ENABLE      memwb_regwren
+`define PROBE_R_WRITE_DESTINATION memwb_rd
+`define PROBE_R_WRITE_DATA        wb_data
+`define PROBE_R_READ_RS1          d_rs1
+`define PROBE_R_READ_RS2          d_rs2
+`define PROBE_R_READ_RS1_DATA     d_rs1_data
+`define PROBE_R_READ_RS2_DATA     d_rs2_data
 
 `define PROBE_E_PC                e_pc_probe
 `define PROBE_E_ALU_RES           e_alu_res_probe
@@ -38,4 +38,4 @@
 
 // ----  Top module  ----
 `define TOP_MODULE  pd5 
-// ----  Top module  ----//
+// ----  Top module  ----
