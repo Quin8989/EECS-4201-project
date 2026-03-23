@@ -160,7 +160,33 @@ module pd5 #(
     logic d_uses_rs1;
     logic [DWIDTH-1:0] m_data_probe;
 
+    // Decode-stage jump redirect (JAL/JALR resolved in ID, 1-cycle penalty)
+    logic             id_jump_taken;
+    logic [AWIDTH-1:0] id_jump_target;
+
     assign data_out = f_insn;
+
+    // -----------------------------------------------------------------------
+    // Decode-stage jump resolution (JAL/JALR):
+    //   JAL:  target = d_pc + d_imm  (pure PC-relative, computable in decode)
+    //   JALR: target = (rs1 + imm) & ~1  (rs1 from register file, read in decode)
+    // This gives a 1-cycle penalty instead of 2 from EX-stage resolution.
+    // Guard against firing when EX is already redirecting (EX takes priority).
+    // -----------------------------------------------------------------------
+    always_comb begin
+        id_jump_taken  = 1'b0;
+        id_jump_target = '0;
+
+        if (!load_use_stall && !branch_taken_ex) begin
+            if (d_opcode == `OPC_JAL) begin
+                id_jump_taken  = 1'b1;
+                id_jump_target = d_pc + d_imm;
+            end else if (d_opcode == `OPC_JALR) begin
+                id_jump_taken  = 1'b1;
+                id_jump_target = (d_rs1_data + d_imm) & 32'hffff_fffe;
+            end
+        end
+    end
 
     assign r_write_enable      = memwb_regwren;
     assign r_write_destination = memwb_rd;
@@ -255,7 +281,7 @@ module pd5 #(
         .clk       (clk),
         .rst       (reset),
         .next_pc_i (next_pc),
-        .brtaken_i (branch_taken_ex),
+        .brtaken_i (branch_taken_ex | id_jump_taken),
         .stall_i   (load_use_stall),
         .pc_o      (f_pc),
         .insn_o    (f_insn)
@@ -267,7 +293,11 @@ module pd5 #(
             ifid_pc   <= '0;
             ifid_insn <= '0;
         end else if (branch_taken_ex) begin
-            // keep the same decode pc, but squash the instruction into a real nop
+            // EX-stage branch taken: squash the speculatively fetched instruction
+            ifid_pc   <= ifid_pc;
+            ifid_insn <= nop_insn;
+        end else if (id_jump_taken) begin
+            // Decode-stage JAL/JALR: squash the one wrong-path instruction from IF
             ifid_pc   <= ifid_pc;
             ifid_insn <= nop_insn;
         end else if (!load_use_stall) begin
@@ -433,6 +463,30 @@ module pd5 #(
             idex_memwren  <= 1'b0;
             idex_wbsel    <= `WB_ALU;
             idex_alusel   <= `ALU_ADD;
+        end else if (id_jump_taken) begin
+            // JAL/JALR resolved in decode: let the jump flow into EX for rd writeback,
+            // but clear pcsel so EX does NOT fire a second redirect.
+            idex_pc       <= d_pc;
+            idex_insn     <= d_insn;
+            idex_opcode   <= d_opcode;
+            idex_rd       <= d_rd;
+            idex_rs1      <= d_rs1;
+            idex_rs2      <= d_rs2;
+            idex_funct7   <= d_funct7;
+            idex_funct3   <= d_funct3;
+            idex_shamt    <= d_shamt;
+            idex_imm      <= d_imm;
+            idex_rs1_data <= d_rs1_data;
+            idex_rs2_data <= d_rs2_data;
+            idex_pcsel    <= 1'b0;        // redirect already done in decode
+            idex_immsel   <= d_immsel;
+            idex_regwren  <= d_regwren;
+            idex_rs1sel   <= d_rs1sel;
+            idex_rs2sel   <= d_rs2sel;
+            idex_memren   <= d_memren;
+            idex_memwren  <= d_memwren;
+            idex_wbsel    <= d_wbsel;
+            idex_alusel   <= d_alusel;
         end else begin
             idex_pc       <= d_pc;
             idex_insn     <= d_insn;
@@ -557,7 +611,8 @@ module pd5 #(
     end
 
     assign branch_taken_ex = e_br_taken | idex_pcsel;
-    assign next_pc = ex_branch_target;
+    // EX-stage redirect takes priority over decode-stage jump redirect
+    assign next_pc = branch_taken_ex ? ex_branch_target : id_jump_target;
 
     // EX/MEM
     always_ff @(posedge clk) begin
@@ -591,10 +646,12 @@ module pd5 #(
     end
 
     // proper store-data forwarding
+    // IMPORTANT: must check memwb_regwren, because STORE instructions pass their
+    // imm[4:0] bits through the rd pipeline field, which can alias a real register number.
     always_comb begin
         mem_store_data = exmem_rs2_data;
 
-        if ((exmem_rs2 != 5'd0) && (memwb_rd == exmem_rs2))
+        if (memwb_regwren && (exmem_rs2 != 5'd0) && (memwb_rd == exmem_rs2))
             mem_store_data = wb_data;
     end
 
