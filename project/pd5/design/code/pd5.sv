@@ -133,7 +133,7 @@ module pd5 #(
     logic e_br_taken_probe;
     logic [AWIDTH-1:0] m_address;
     logic [AWIDTH-1:0] m_address_probe;
-    logic [2:0] m_size_encoded;
+    logic [1:0] m_size_encoded;
 
     logic [AWIDTH-1:0] w_pc;
     logic w_enable;
@@ -173,7 +173,7 @@ module pd5 #(
     assign e_pc           = idex_pc;
     assign m_pc           = exmem_pc;
     assign m_address      = exmem_alu_res;
-    assign m_size_encoded = exmem_funct3;
+    assign m_size_encoded = exmem_funct3[1:0];
     assign w_pc           = memwb_pc;
     assign w_enable       = memwb_regwren;
     assign w_destination  = memwb_rd;
@@ -353,13 +353,24 @@ module pd5 #(
         endcase
     end
 
+    logic wd_stall;
+    assign wd_stall =
+        memwb_regwren &&
+        (memwb_rd != 5'd0) &&
+        !((idex_regwren && (idex_rd == memwb_rd)) ||
+          (exmem_regwren && (exmem_rd == memwb_rd))) &&
+        (
+            (d_rs1 == memwb_rd) ||
+            (d_rs2 == memwb_rd)
+        );
+
     assign load_use_stall =
-        idex_memren &&
+        (idex_memren &&
         (idex_rd != 5'd0) &&
         (
             ((d_uses_rs1 && (d_rs1 == idex_rd) && (d_rs1 != 5'd0))) ||
             ((d_uses_rs2 && (d_rs2 == idex_rd) && (d_rs2 != 5'd0)) && (d_opcode != `OPC_STORE))
-        );
+        )) || wd_stall;
 
 
     // ID/EX
@@ -387,26 +398,26 @@ module pd5 #(
             idex_wbsel    <= `WB_OFF;
             idex_alusel   <= `ALU_ADD;
         end else if (load_use_stall) begin
-            idex_pc       <= '0;
-            idex_insn     <= '0;
-            idex_opcode   <= '0;
-            idex_rd       <= '0;
-            idex_rs1      <= '0;
-            idex_rs2      <= '0;
-            idex_funct7   <= '0;
-            idex_funct3   <= '0;
-            idex_shamt    <= '0;
-            idex_imm      <= '0;
-            idex_rs1_data <= '0;
-            idex_rs2_data <= '0;
+            idex_pc       <= d_pc;
+            idex_insn     <= nop_insn;
+            idex_opcode   <= `OPC_ITYPE;
+            idex_rd       <= 5'd0;
+            idex_rs1      <= 5'd0;
+            idex_rs2      <= 5'd0;
+            idex_funct7   <= 7'd0;
+            idex_funct3   <= 3'd0;
+            idex_shamt    <= 5'd0;
+            idex_imm      <= 32'd0;
+            idex_rs1_data <= 32'd0;
+            idex_rs2_data <= 32'd0;
             idex_pcsel    <= 1'b0;
-            idex_immsel   <= 1'b0;
-            idex_regwren  <= 1'b0;
+            idex_immsel   <= 1'b1;
+            idex_regwren  <= 1'b1;
             idex_rs1sel   <= 1'b0;
             idex_rs2sel   <= 1'b0;
             idex_memren   <= 1'b0;
             idex_memwren  <= 1'b0;
-            idex_wbsel    <= `WB_OFF;
+            idex_wbsel    <= `WB_ALU;
             idex_alusel   <= `ALU_ADD;
         end else if (branch_taken_ex) begin
             // send a nop-looking instruction into execute at the same pc
@@ -582,7 +593,7 @@ module pd5 #(
             exmem_rs2      <= idex_rs2;
             exmem_funct3   <= idex_funct3;
             exmem_alu_res  <= e_alu_res;
-            exmem_rs2_data <= idex_rs2_data;
+            exmem_rs2_data <= ex_fwd_rs2_data;
             exmem_regwren  <= idex_regwren;
             exmem_memren   <= idex_memren;
             exmem_memwren  <= idex_memwren;
@@ -646,30 +657,6 @@ module pd5 #(
         .wbsel_i          (memwb_wbsel),
         .writeback_data_o (wb_data)
     );
-
-    // optional light debug only
-    always_ff @(posedge clk) begin
-        if (!reset) begin
-            if (w_pc_probe == 32'h01000230 || w_pc_probe == 32'h0100023c) begin
-                $display("WB_PASSFAIL: w_pc=%h x15=%h w_enable=%b w_dest=%0d w_data=%h",
-                        w_pc_probe, rf_x15, w_enable_probe, w_destination_probe, w_data_probe);
-            end
-        end
-    end
-
-    always_ff @(posedge clk) begin
-        if (!reset && exmem_pc == 32'h01000058) begin
-            $display("FAILDBG_M: pc=%h insn=%h opcode=%h rs2=%0d exmem_rs2_data=%h mem_store_data=%h memwb_rd=%0d wb_data=%h",
-                    exmem_pc, exmem_insn, exmem_opcode, exmem_rs2, exmem_rs2_data, mem_store_data, memwb_rd, wb_data);
-        end
-    end
-
-    always_ff @(posedge clk) begin
-        if (!reset && (memwb_rd == 5'd15) && memwb_regwren) begin
-            $display("X15DBG: w_pc=%h wbsel=%0d alu_res=%h mem_data=%h wb_data=%h",
-                    memwb_pc, memwb_wbsel, memwb_alu_res, memwb_mem_data, wb_data);
-        end
-    end
 
     // program termination logic
     reg is_program = 0;
