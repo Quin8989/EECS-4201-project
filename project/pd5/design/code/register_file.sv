@@ -26,8 +26,10 @@ module register_file #(
     logic [DWIDTH-1:0] registers [0:31];
     localparam logic [DWIDTH-1:0] STACK_INIT = 32'h0110_0000;
 
-    assign rs1data_o = registers[rs1_i];
-    assign rs2data_o = registers[rs2_i];
+    // Write-first bypass: when WB writes the same register ID is reading
+    // on the same clock edge, return the new value instead of the stale one.
+    assign rs1data_o = (regwren_i && rd_i != 5'd0 && rd_i == rs1_i) ? datawb_i : registers[rs1_i];
+    assign rs2data_o = (regwren_i && rd_i != 5'd0 && rd_i == rs2_i) ? datawb_i : registers[rs2_i];
     assign x15       = registers[15];
 
     always_ff @(posedge clk) begin
